@@ -25,7 +25,7 @@ export default async function Page() {
           <tbody>
             {
               contatos.map((contato) =>
-                <tr>
+                <tr key = {contato.id}>
                   <td>{contato.nome}</td>
                   <td>{contato.endereco}</td>
                   <td>{contato.telefone}</td>
