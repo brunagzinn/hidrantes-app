@@ -1,68 +1,52 @@
-"use client"
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import styles from "../contatos.module.css"
+import styles from './contatos.module.css'
+import Link from 'next/link'
 
-export default function Criar() {
-  const router = useRouter();
+const baseUrl =
+  (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");
 
-  const [nome, setNome] = useState("");
-  const [endereco, setEndereco] = useState("");
-  const [telefone, setTelefone] = useState("");
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const contato = {
-      nome, endereco, telefone
-    }
-
-    const resposta = await fetch("http://localhost:3000/api/contatos", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(contato)
-    })
-    if (resposta.ok) {
-      router.push("/contatos")
-    }
-    else {
-      alert("Erro ao criar contato")
-    }
+async function buscarContatos() {
+  try {
+    const resposta = await fetch(`${baseUrl}/api/contatos`, { cache: 'no-store' });
+    return await resposta.json();
+  } catch (erro) {
+    console.error(erro);
+    return [];
   }
+}
 
+export default async function Page() {
+  const contatos = await buscarContatos();
   return (
     <div className={styles.container}>
-      <h1>Criar contato</h1>
+      <h1>Olá NextJS - Contatos Page</h1>
+      <Link href="/contatos/criar">Criar</Link>
       <div className={styles.principal}>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Nome: </label>
-            <input
-              value={nome}
-              onChange={(event) => setNome(event.target.value)}
-              type="text" />
-          </div>
-          <div>
-            <label>Endereco: </label>
-            <input
-              value={endereco}
-              onChange={(event) => setEndereco(event.target.value)}              
-              type="text" />
-          </div>
-          <div>
-            <label>Telefone: </label>
-            <input
-              value={telefone}
-              onChange={(event) => setTelefone(event.target.value)}
-              type="number" />
-          </div>
-          <button type="submit">Criar</button>
-          <Link href="/contatos" className={styles.espacamento}>Voltar</Link>
-        </form>
+        <table className={styles.contatos}>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Endereço</th>
+              <th>Telefone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              contatos.map((contato) =>
+                <tr key={contato.id}>
+                  <td>{contato.nome}</td>
+                  <td>{contato.endereco}</td>
+                  <td>{contato.telefone}</td>
+                </tr>
+              )
+            }
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan="3">Total contatos: {contatos.length}</td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
     </div>
-  );
+  )
 }
