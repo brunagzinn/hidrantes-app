@@ -1,8 +1,13 @@
 import styles from './contatos.module.css'
 
 async function buscarContatos() {
-  const resposta = await fetch("http://localhost:3000/api/contatos");
-  return await resposta.json();
+  try {
+    const resposta = await fetch("http://localhost:3000/api/contatos");
+    return await resposta.json();
+  } catch (error) {
+    console.error(error)
+    return []
+  }
 }
 
 export default async function Page() {
@@ -21,7 +26,7 @@ export default async function Page() {
         <tbody>
           {
             contatos.map((contato) =>
-              <tr>
+              <tr key={contato.id}>
                 <td>{contato.nome}</td>
                 <td>{contato.endereco}</td>
                 <td>{contato.telefone}</td>
