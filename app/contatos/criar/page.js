@@ -101,9 +101,11 @@ export default function Criar() {
               value={tipo}
               onChange={(event) => setTipo(event.target.value)}
             >
-              <option value="Hidrante Vertical">Hidrante Vertical</option>
-              <option value="Hidrante de Rosca">Hidrante de Rosca</option>
-              <option value="Hidrante de Encaixe">Hidrante de Encaixe</option>
+              <option value="Hid Coluna Rosca">Hid Coluna Rosca</option>
+              <option value="Hid Coluna Storze ">Hid Coluna Storze</option>
+              <option value="Hid Caixa Rosca ">Hid Caixa Rosca</option>
+              <option value="Hid Caixa Garra ">Hid Caixa Garra</option>
+              <option value="Não informado ">Nao informado </option>
             </select>
           </div>
           <button type="submit">Criar</button>

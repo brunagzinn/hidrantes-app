@@ -39,21 +39,24 @@ export default async function Page() {
             {
               contatos.map((contato) =>
                 <tr key={contato.id}>
-                  <td>{contato.nome}</td>
-                  <td>{contato.logradouro}</td>
-                  <td>{contato.bairro}</td>
-                  <td>{contato.cidade}</td>
-                  <td>{contato.uf}</td>
-                  <td>{contato.latitude}</td>
-                  <td>{contato.longitude}</td>
-                  <td>{contato.tipo}</td>
+                  <td>
+                    <Link href={`/contatos/${contato.id}/editar`}>Editar</Link> | <Link href={`/contatos/${contato.id}/excluir`}>Excluir</Link>
+                  </td>
+                  <td>{contato.Nome}</td>
+                  <td>{contato.Logradouro}</td>
+                  <td>{contato.Bairro}</td>
+                  <td>{contato.Cidade}</td>
+                  <td>{contato.UF}</td>
+                  <td>{contato.Latitude}</td>
+                  <td>{contato.Longitude}</td>
+                  <td>{contato.Tipo}</td>
                 </tr>
               )
             }
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan="8">Total contatos: {contatos.length}</td>
+              <td colSpan="9">Total contatos: {contatos.length}</td>
             </tr>
           </tfoot>
         </table>
