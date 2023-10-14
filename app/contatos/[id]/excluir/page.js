@@ -50,13 +50,13 @@ export default function Page({ params: { id } }) {
             <div className={styles.principal}>
                 <div>
                     <p><strong>Nome: </strong>{contato.nome}</p>
-                    <p><strong>Endereço: </strong>{contato.logradouro}</p>
-                    <p><strong>Telefone: </strong>{contato.bairro}</p>
-                    <p><strong>Telefone: </strong>{contato.cidade}</p>
-                    <p><strong>Telefone: </strong>{contato.uf}</p>
-                    <p><strong>Telefone: </strong>{contato.latitude}</p>
-                    <p><strong>Telefone: </strong>{contato.longitude}</p>
-                    <p><strong>Telefone: </strong>{contato.tipo}</p>
+                    <p><strong>Logradouro: </strong>{contato.logradouro}</p>
+                    <p><strong>Bairro: </strong>{contato.bairro}</p>
+                    <p><strong>Cidade: </strong>{contato.cidade}</p>
+                    <p><strong>UF: </strong>{contato.uf}</p>
+                    <p><strong>Latitude: </strong>{contato.latitude}</p>
+                    <p><strong>Longitude: </strong>{contato.longitude}</p>
+                    <p><strong>Tipo: </strong>{contato.tipo}</p>
                 </div>
                 <button onClick={handleDelete}>Excluir</button>
                 <Link href="/contatos" className={styles.espacamento}>Voltar</Link>
