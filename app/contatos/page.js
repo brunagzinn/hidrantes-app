@@ -18,7 +18,7 @@ export default async function Page() {
   const contatos = await buscarContatos();
   return (
     <div className={styles.container}>
-      <h1>Olá NextJS - Contatos Page</h1>
+      <h1>Cadastro de Hidrantes</h1>
       <Link href="/contatos/criar">Criar</Link>
       <div className={styles.principal}>
         <table className={styles.contatos}>
