@@ -12,13 +12,14 @@ export default async function handler(req, res) {
     res.json(rows);
     return;
   } else if (req.method === 'POST') {
-    const { nome, endereco, telefone } = req.body;
+    const { nome, logradouro, bairro, cidade, uf, longitude, latitude, tipo } = req.body;
 
     try {
-      await sql`insert into contatos (nome, endereco, telefone) values (${nome},${endereco},${telefone})`
+      await sql`insert into contatos (nome, logradouro, bairro, cidade, uf, longitude, latitude, tipo) 
+                values (${nome}, ${logradouro}, ${bairro}, ${cidade}, ${uf}, ${latitude}, ${longitude}, ${tipo})`;
       res.status(201).end();
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      res.status(500).json({ error: error.message });
     }
     return;
   }

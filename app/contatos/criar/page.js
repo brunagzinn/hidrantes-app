@@ -11,14 +11,19 @@ export default function Criar() {
   const router = useRouter();
 
   const [nome, setNome] = useState("");
-  const [endereco, setEndereco] = useState("");
-  const [telefone, setTelefone] = useState("");
+  const [logradouro, setLogradouro] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [uf, setUf] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [tipo, setTipo] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const contato = {
-      nome, endereco, telefone
+      nome, logradouro, bairro, cidade, uf, latitude, longitude, tipo
     }
 
     const resposta = await fetch(`${baseUrl}/api/contatos`, {
@@ -42,25 +47,64 @@ export default function Criar() {
       <div className={styles.principal}>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Nome: </label>
+            <label>nome: </label>
             <input
               value={nome}
               onChange={(event) => setNome(event.target.value)}
               type="text" />
           </div>
           <div>
-            <label>Endereco: </label>
+            <label>logradouro: </label>
             <input
-              value={endereco}
-              onChange={(event) => setEndereco(event.target.value)}              
+              value={logradouro}
+              onChange={(event) => setLogradouro(event.target.value)}
               type="text" />
           </div>
           <div>
-            <label>Telefone: </label>
+            <label>bairro: </label>
             <input
-              value={telefone}
-              onChange={(event) => setTelefone(event.target.value)}
+              value={bairro}
+              onChange={(event) => setBairro(event.target.value)}
+            />
+          </div>
+          <div>
+            <label>cidade: </label>
+            <input
+              value={cidade}
+              onChange={(event) => setCidade(event.target.value)}
+            />
+          </div>
+          <div>
+            <label>uf: </label>
+            <input
+              value={uf}
+              onChange={(event) => setUf(event.target.value)}
+            />
+          </div>
+          <div>
+            <label>latitude: </label>
+            <input
+              value={latitude}
+              onChange={(event) => setLatitude(event.target.value)}
               type="number" />
+          </div>
+          <div>
+            <label>longitude: </label>
+            <input
+              value={longitude}
+              onChange={(event) => setLongitude(event.target.value)}
+              type="number" />
+          </div>
+          <div>
+            <label>tipo: </label>
+            <select
+              value={tipo}
+              onChange={(event) => setTipo(event.target.value)}
+            >
+              <option value="Hidrante Vertical">Hidrante Vertical</option>
+              <option value="Hidrante de Rosca">Hidrante de Rosca</option>
+              <option value="Hidrante de Encaixe">Hidrante de Encaixe</option>
+            </select>
           </div>
           <button type="submit">Criar</button>
           <Link href="/contatos" className={styles.espacamento}>Voltar</Link>

@@ -24,25 +24,36 @@ export default async function Page() {
         <table className={styles.contatos}>
           <thead>
             <tr>
-              <th>Nome</th>
-              <th>Endereço</th>
-              <th>Telefone</th>
+              <th>nome</th>
+              <th>logradouro</th>
+              <th>bairro</th>
+              <th>cidade</th>
+              <th>uf</th>
+              <th>latitude</th>
+              <th>longitude</th>
+              <th>tipo</th>
+
             </tr>
           </thead>
           <tbody>
             {
               contatos.map((contato) =>
                 <tr key={contato.id}>
-                  <td>{contato.nome}</td>
-                  <td>{contato.endereco}</td>
-                  <td>{contato.telefone}</td>
+                  <td>{contato.Nome}</td>
+                  <td>{contato.Logradouro}</td>
+                  <td>{contato.Bairro}</td>
+                  <td>{contato.Cidade}</td>
+                  <td>{contato.UF}</td>
+                  <td>{contato.Latitude}</td>
+                  <td>{contato.Longitude}</td>
+                  <td>{contato.Tipo}</td>
                 </tr>
               )
             }
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan="3">Total contatos: {contatos.length}</td>
+              <td colSpan="8">Total contatos: {contatos.length}</td>
             </tr>
           </tfoot>
         </table>
