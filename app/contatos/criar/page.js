@@ -105,7 +105,7 @@ export default function Criar() {
               <option value="Hid Coluna Storze ">Hid Coluna Storze</option>
               <option value="Hid Caixa Rosca ">Hid Caixa Rosca</option>
               <option value="Hid Caixa Garra ">Hid Caixa Garra</option>
-              <option value="Não informado ">Nao informado </option>
+              <option value="Não informado ">Não informado </option>
             </select>
           </div>
           <button type="submit">Criar</button>

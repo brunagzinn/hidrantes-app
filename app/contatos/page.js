@@ -24,6 +24,7 @@ export default async function Page() {
         <table className={styles.contatos}>
           <thead>
             <tr>
+              <th></th>
               <th>Nome</th>
               <th>Logradouro</th>
               <th>Bairro</th>
@@ -32,7 +33,6 @@ export default async function Page() {
               <th>Latitude</th>
               <th>Longitude</th>
               <th>Tipo</th>
-
             </tr>
           </thead>
           <tbody>
@@ -42,14 +42,14 @@ export default async function Page() {
                   <td>
                     <Link href={`/contatos/${contato.id}/editar`}>Editar</Link> | <Link href={`/contatos/${contato.id}/excluir`}>Excluir</Link>
                   </td>
-                  <td>{contato.Nome}</td>
-                  <td>{contato.Logradouro}</td>
-                  <td>{contato.Bairro}</td>
-                  <td>{contato.Cidade}</td>
-                  <td>{contato.UF}</td>
-                  <td>{contato.Latitude}</td>
-                  <td>{contato.Longitude}</td>
-                  <td>{contato.Tipo}</td>
+                  <td>{contato.nome}</td>
+                  <td>{contato.logradouro}</td>
+                  <td>{contato.bairro}</td>
+                  <td>{contato.cidade}</td>
+                  <td>{contato.uf}</td>
+                  <td>{contato.latitude}</td>
+                  <td>{contato.longitude}</td>
+                  <td>{contato.tipo}</td>
                 </tr>
               )
             }

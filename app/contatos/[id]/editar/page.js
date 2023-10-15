@@ -19,7 +19,16 @@ async function buscarContato(id) {
 
 export default function Page({ params: { id } }) {
     const router = useRouter();
-    const [contato, setContato] = useState({ nome: '', logradouro: '', bairro: '', cidade: '', uf: '', latitude: '', longitude: '', tipo: '' })
+    const [contato, setContato] = useState({
+        nome: '', 
+        logradouro: '', 
+        bairro: '', 
+        cidade: '', 
+        uf: '', 
+        latitude: '', 
+        longitude: '', 
+        tipo: ''
+    })
     useEffect(() => {
         async function fetchData() {
             const data = await buscarContato(id)
@@ -68,7 +77,7 @@ export default function Page({ params: { id } }) {
                         <label>Logradouro: </label>
                         <input
                             value={contato.logradouro}
-                            name="Logradouro"
+                            name="logradouro"
                             onChange={handleChange}
                             type="text" />
                     </div>
@@ -76,7 +85,7 @@ export default function Page({ params: { id } }) {
                         <label>Bairro: </label>
                         <input
                             value={contato.bairro}
-                            name="Bairro"
+                            name="bairro"
                             onChange={handleChange}
                             type="text" />
                     </div>
@@ -85,7 +94,7 @@ export default function Page({ params: { id } }) {
                         <label>Cidade: </label>
                         <input
                             value={contato.cidade}
-                            name="Cidade"
+                            name="cidade"
                             onChange={handleChange}
                             type="text" />
                     </div>
@@ -93,7 +102,7 @@ export default function Page({ params: { id } }) {
                         <label>UF: </label>
                         <input
                             value={contato.uf}
-                            name="UF"
+                            name="uf"
                             onChange={handleChange}
                             type="text" />
                     </div>
@@ -101,7 +110,7 @@ export default function Page({ params: { id } }) {
                         <label>Latitude: </label>
                         <input
                             value={contato.latitude}
-                            name="Latitude"
+                            name="latitude"
                             onChange={handleChange}
                             type="number" />
                     </div>
@@ -109,15 +118,7 @@ export default function Page({ params: { id } }) {
                         <label>Longitude: </label>
                         <input
                             value={contato.longitude}
-                            name="Longitude"
-                            onChange={handleChange}
-                            type="number" />
-                    </div>
-                    <div>
-                        <label>Tipo: </label>
-                        <input
-                            value={contato.telefone}
-                            name="telefone"
+                            name="longitude"
                             onChange={handleChange}
                             type="number" />
                     </div>
@@ -125,14 +126,14 @@ export default function Page({ params: { id } }) {
                         <label>Tipo: </label>
                         <select
                             value={contato.tipo}
-                            name="Tipo"
+                            name="tipo"
                             onChange={handleChange}
                         >
+                            <option value="">Não informado</option>
                             <option value="Hid Coluna Rosca">Hid Coluna Rosca</option>
                             <option value="Hid Coluna Storze ">Hid Coluna Storze</option>
                             <option value="Hid Caixa Rosca ">Hid Caixa Rosca</option>
                             <option value="Hid Caixa Garra ">Hid Caixa Garra</option>
-                            <option value="Não informado ">Nao informado </option>
                         </select>
                     </div>
 
