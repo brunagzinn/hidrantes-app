@@ -6,24 +6,49 @@ body {margin: 0;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #00A758;
+    font-weight: bold;
   }
   
-  ul.topnav li {float: left;}
+  ul.topnav li {
+    float: left;
+    font-size: 22px;
+  }
   
   ul.topnav li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 30px;
     text-decoration: none;
   }
   
-  ul.topnav li a:hover:not(.active) {background-color: #111;}
+  ul.topnav li a:hover:not(.active) {
+    background-color: rgb(8, 150, 98);
+    box-shadow: black 0.2em 0.3em 0.2em;
+  }
   
-  ul.topnav li a.active {background-color: #04AA6D;}
+  ul.topnav li a.active {
+    background-color: #04AA6D;
+  }
   
-  ul.topnav li.right {float: right;}
+  ul.topnav li.right {
+    float: right;
+    margin-right: 50px;
+    border-radius: 50%;
+    border-style: dashed;
+    border-color: white;
+    border-width: 2px;
+  }
+
+  ul.topnav li.right a:hover:not(.active) {
+    border-radius: 50%;
+    box-shadow: none;
+  }
+
+  ul.topnav li.left {
+    margin-left: 50px;
+  }
   
   @media screen and (max-width: 600px) {
     ul.topnav li.right, 
@@ -32,4 +57,48 @@ body {margin: 0;
   
   section.main {
     padding: 0 16px;
+  }
+
+  .titulo {
+    display: flex;
+    text-align: left;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+  }
+
+  .escrita {
+    color: white;
+    line-height: 0%;
+    margin-top: 40px;
+    padding-left: 50px;
+    font-size: 20px;
+  }
+
+  .titulo h2 {
+    font-weight: normal;
+    font-size: 35px;
+  }
+
+  header {
+    background: #0077A5;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #0077A5;
+    width: 100%;
+    height: 40px;    
+    line-height: 100px;
+}
+
+  .mapaCanoas {
+    display: flex;
+    position: relative;
+  }
+
+  .mapaCanoas p {
+    font-weight: bold;
+    margin-top: 200px;
   }

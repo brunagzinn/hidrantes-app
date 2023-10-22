@@ -14,6 +14,7 @@
 .container h1 {
     color: #333;
     margin-bottom: 2rem;
+    font-size: 36px;
 }
 
 .container .principal {
@@ -44,23 +45,28 @@
     font-size: 1rem;
 }
 
-.container button {
+.container button, .espacamento, .botaoAdd {
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #0077A5;
     color: #fff;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     border: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
-.container button:hover {
-    background-color: #0056b3;
+.container button:hover, .espacamento:hover, .botaoAdd:hover {
+    background-color: #066991;
 }
 
 .espacamento {
     margin-left: 10px;
+}
+
+.botaoAdd {
+    margin-bottom: 10px;
 }
 
 /* Responsividade */

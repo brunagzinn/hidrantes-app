@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import brasaoBombeiros from './brasao-bombeiros.png'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -15,18 +17,35 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
 
         <header>
+          <div className="titulo">
+            <Image
+              src={brasaoBombeiros}
+              alt="Brasão Corpo de Bombeiros"
+              width={185}
+              height={180}
+            />
+            <div className="escrita">
+              <h1>LOCALIZA FÁCIL - HIDRANTES PÚBLICOS</h1>
+            <p>
+              <br></br>          
+            </p>
+              <h2>CORPO DE BOMBEIROS MILITAR DE CANOAS/RS</h2>
+            </div>
+          </div>
           <ul className="topnav">
-            <li>
+            <li className="left">
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/contatos">Contatos</Link>
+              <Link href="/contatos">Hidrantes</Link>
             </li>
             <li className='right'>
-              <Link href="/sobre">Sobre</Link>
+              <Link href="/sobre">?</Link>
             </li>
           </ul>
         </header>
+        <footer>
+        </footer>
         <section>
           {children}
         </section>

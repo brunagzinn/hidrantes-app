@@ -29,7 +29,7 @@ export default function Page({ params: { id } }) {
     }, [id])
 
     const handleDelete = async () => {
-        const confirmation = window.confirm("Tem certeza de que deseja excluir este contato?")
+        const confirmation = window.confirm("Tem certeza de que deseja excluir este hidrante?")
         if (confirmation) {
 
             const resposta = await fetch(`${baseUrl}/api/contatos/${contato.id}`, {

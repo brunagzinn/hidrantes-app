@@ -1,7 +1,7 @@
 "use client"
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 import styles from "../contatos.module.css"
 
 const baseUrl =
@@ -37,13 +37,13 @@ export default function Criar() {
       router.push("/contatos")
     }
     else {
-      alert("Erro ao criar contato")
+      alert("Erro ao cadastrar hidrante")
     }
   }
 
   return (
     <div className={styles.container}>
-      <h1>Criar contato</h1>
+      <h1>Cadastro de Hidrante</h1>
       <div className={styles.principal}>
         <form onSubmit={handleSubmit}>
           <div>
@@ -108,7 +108,7 @@ export default function Criar() {
               <option value="Não informado ">Não informado </option>
             </select>
           </div>
-          <button type="submit">Criar</button>
+          <button type="submit">Cadastrar</button>
           <Link href="/contatos" className={styles.espacamento}>Voltar</Link>
         </form>
       </div>

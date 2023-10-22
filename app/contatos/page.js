@@ -1,12 +1,14 @@
+"use client"
+import { useState, useEffect } from 'react';
 import styles from './contatos.module.css'
 import Link from 'next/link'
 
 const baseUrl =
   (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");
 
-async function buscarContatos() {
+async function buscarContatos(bairro) {
   try {
-    const resposta = await fetch(`${baseUrl}/api/contatos`, { cache: 'no-store' });
+    const resposta = await fetch(`${baseUrl}/api/contatos?bairro=${bairro}`, { cache: 'no-store' });
     return await resposta.json();
   } catch (erro) {
     console.error(erro);
@@ -14,13 +16,27 @@ async function buscarContatos() {
   }
 }
 
-export default async function Page() {
-  const contatos = await buscarContatos();
+export default function Page() {
+
+  const [bairro, setBairro] = useState ('');
+  const [contatos, setContatos] = useState([])
+
+  useEffect(() => {
+
+    buscarContatos(bairro).then(results => {
+      setContatos(results);
+    })
+  }, [bairro])
   return (
     <div className={styles.container}>
       <h1>Cadastro de Hidrantes</h1>
-      <Link href="/contatos/criar">Criar</Link>
+      <Link href="/contatos/criar" className={styles.botaoAdd}>Adicionar</Link>
       <div className={styles.principal}>
+        <input
+          value={bairro}
+          onChange={event => setBairro(event.target.value)}
+          placeholder='Pesquisa por bairro...'
+        />
         <table className={styles.contatos}>
           <thead>
             <tr>
@@ -56,7 +72,7 @@ export default async function Page() {
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan="9">Total contatos: {contatos.length}</td>
+              <td colSpan="9">Total de hidrantes: {contatos.length}</td>
             </tr>
           </tfoot>
         </table>

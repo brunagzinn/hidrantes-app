@@ -56,13 +56,13 @@ export default function Page({ params: { id } }) {
             router.push("/contatos")
         }
         else {
-            alert("Erro ao atualizar contato")
+            alert("Erro ao atualizar hidrante")
         }
     }
 
     return (
         <div className={styles.container}>
-            <h1>Atualizar contato</h1>
+            <h1>Atualizar hidrante</h1>
             <div className={styles.principal}>
                 <form onSubmit={handleSubmit}>
                     <div>
