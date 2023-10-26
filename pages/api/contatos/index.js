@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       const bairroLike = `%${req.query.bairro}%`
       const { rows } = await sql` select * 
                                   from contatos 
-                                  where bairro like ${bairroLike}
+                                  where upper(bairro) like upper(${bairroLike})
                                   order by nome`;
       res.json(rows);
     } else {

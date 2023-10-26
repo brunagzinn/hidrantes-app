@@ -58,7 +58,7 @@ export default function Page({ params: { id } }) {
                     <p><strong>Longitude: </strong>{contato.longitude}</p>
                     <p><strong>Tipo: </strong>{contato.tipo}</p>
                 </div>
-                <button onClick={handleDelete}>Excluir</button>
+                <button onClick={handleDelete} className={styles.botaoExc}>Excluir</button>
                 <Link href="/contatos" className={styles.espacamento}>Voltar</Link>
             </div>
         </div>

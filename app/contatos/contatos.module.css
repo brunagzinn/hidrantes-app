@@ -45,7 +45,7 @@
     font-size: 1rem;
 }
 
-.container button, .espacamento, .botaoAdd {
+.container button, .espacamento, .botaoAdd, .botaoExc {
     cursor: pointer;
     background-color: #0077A5;
     color: #fff;
