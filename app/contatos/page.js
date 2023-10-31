@@ -18,7 +18,7 @@ async function buscarContatos(bairro) {
 
 export default function Page() {
 
-  const [bairro, setBairro] = useState ('');
+  const [bairro, setBairro] = useState('');
   const [contatos, setContatos] = useState([])
 
   useEffect(() => {
@@ -41,6 +41,7 @@ export default function Page() {
           <thead>
             <tr>
               <th></th>
+              <th></th>
               <th>Nome</th>
               <th>Logradouro</th>
               <th>Bairro</th>
@@ -56,8 +57,15 @@ export default function Page() {
               contatos.map((contato) =>
                 <tr key={contato.id}>
                   <td>
-                    <Link href={`/contatos/${contato.id}/editar`}>Editar</Link> | <Link href={`/contatos/${contato.id}/excluir`}>Excluir</Link>
+                    <Link href={`/contatos/${contato.id}/editar`}>Editar</Link>
+                    <Link href={`/contatos/${contato.id}/excluir`}>Excluir</Link>|
+
                   </td>
+                  <td> 
+                  <Link target='blank' href={`https://www.google.com/maps?q=${contato.latitude},${contato.longitude}`}>Localizar</Link>
+                    
+                  </td>
+
                   <td>{contato.nome}</td>
                   <td>{contato.logradouro}</td>
                   <td>{contato.bairro}</td>
@@ -66,7 +74,11 @@ export default function Page() {
                   <td>{contato.latitude}</td>
                   <td>{contato.longitude}</td>
                   <td>{contato.tipo}</td>
+
+
                 </tr>
+
+
               )
             }
           </tbody>
