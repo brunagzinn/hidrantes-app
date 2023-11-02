@@ -107,11 +107,11 @@ ul.topnav li.left {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 .mapaCanoas p {
   font-weight: bold;
   font-size: 26px;
-  margin-top: 180px;
+  margin-top: 140px;
   margin-right: 210px;
 }
