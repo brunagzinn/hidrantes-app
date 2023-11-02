@@ -1,7 +1,31 @@
+html,
 body {
-  position: relative;
   margin: 0;
-  min-height: 100vh;
+  height: 100%;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;  
+}
+
+main {
+  flex: 1;
+  overflow: auto;
+}
+
+section {
+  height: 100%;
+  overflow: auto;
+}
+
+header {
+  background: #0077A5;
+}
+
+footer {
+  background-color: #0077A5;  
 }
 
 ul.topnav {
@@ -54,12 +78,11 @@ ul.topnav li.left {
 }
 
 @media screen and (max-width: 600px) {
-  ul.topnav li.right, 
-  ul.topnav li {float: none;}
-}
 
-section.main {
-  padding: 0 16px;
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
 }
 
 .titulo {
@@ -77,30 +100,19 @@ section.main {
   margin-bottom: 40px;
   padding-left: 50px;
   display: flex;
-  flex-direction: column;    
+  flex-direction: column;
 }
 
-  .escrita h1 {
-    font-size: 2vw;
-  }
-
-  .escrita h2 {
-    font-size: 2vw;
-    font-weight: normal;
-  }
-
-header {
-  background: #0077A5;
+.escrita h1 {
+  font-size: 2vw;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  background-color: #0077A5;
-  width: 100%;
-  height: 2rem;    
-  line-height: 100px;
+.escrita h2 {
+  font-size: 2vw;
+  font-weight: normal;
 }
+
+
 
 .mapaCanoas {
   display: flex;

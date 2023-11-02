@@ -21,7 +21,7 @@ export default function Page() {
 
   const searchParams = useSearchParams()
   const search = searchParams.get('bairro')
-  const [bairro, setBairro] = useState(search);
+  const [bairro, setBairro] = useState(search ?? '');
   const [contatos, setContatos] = useState([])
 
   useEffect(() => {
