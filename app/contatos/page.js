@@ -21,7 +21,7 @@ export default function Page() {
 
   const searchParams = useSearchParams()
   const search = searchParams.get('bairro')
-  const [bairro, setBairro] = useState(search);
+  const [bairro, setBairro] = useState(search ?? '');
   const [contatos, setContatos] = useState([])
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function Page() {
               <th>Bairro</th>
               <th>Cidade</th>
               <th>UF</th>
-              <th>Latitude-S </th>
+              <th>Latitude-S</th>
               <th>Longitude-W</th>
               <th>Tipo</th>
             </tr>
@@ -60,8 +60,8 @@ export default function Page() {
               contatos.map((contato) =>
                 <tr key={contato.id}>
                   <td>
-                    <Link href={`/contatos/${contato.id}/editar`}>Editar</Link> |
-                    <Link href={`/contatos/${contato.id}/excluir`}>Excluir</Link>
+                    <Link href={`/contatos/${contato.id}/editar`}>Editar </Link>|
+                    <Link href={`/contatos/${contato.id}/excluir`}> Excluir</Link>
 
                   </td>
                   <td> 
