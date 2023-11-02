@@ -47,8 +47,8 @@ export default function Page() {
               <th>Bairro</th>
               <th>Cidade</th>
               <th>UF</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
+              <th>Latitude-S </th>
+              <th>Longitude-W</th>
               <th>Tipo</th>
             </tr>
           </thead>

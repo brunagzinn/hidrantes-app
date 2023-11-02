@@ -125,7 +125,7 @@ export default function Page({ params: { id } }) {
                             type="text" />
                     </div>
                     <div>
-                        <label>Latitude: </label>
+                        <label>Latitude (S): </label>
                         <input
                             value={contato.latitude}
                             name="latitude"
@@ -133,7 +133,7 @@ export default function Page({ params: { id } }) {
                             type="number" />
                     </div>
                     <div>
-                        <label>Longitude: </label>
+                        <label>Longitude (W): </label>
                         <input
                             value={contato.longitude}
                             name="longitude"

@@ -101,14 +101,14 @@ export default function Criar() {
             />
           </div>
           <div>
-            <label>latitude: </label>
+            <label>latitude (S): </label>
             <input
               value={latitude}
               onChange={(event) => setLatitude(event.target.value)}
               type="number" />
           </div>
           <div>
-            <label>longitude: </label>
+            <label>longitude (W): </label>
             <input
               value={longitude}
               onChange={(event) => setLongitude(event.target.value)}
