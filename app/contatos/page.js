@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation'
 import styles from './contatos.module.css'
 import Link from 'next/link'
 
@@ -18,7 +19,9 @@ async function buscarContatos(bairro) {
 
 export default function Page() {
 
-  const [bairro, setBairro] = useState('');
+  const searchParams = useSearchParams()
+  const search = searchParams.get('bairro')
+  const [bairro, setBairro] = useState(search);
   const [contatos, setContatos] = useState([])
 
   useEffect(() => {
@@ -57,8 +60,8 @@ export default function Page() {
               contatos.map((contato) =>
                 <tr key={contato.id}>
                   <td>
-                    <Link href={`/contatos/${contato.id}/editar`}>Editar</Link>
-                    <Link href={`/contatos/${contato.id}/excluir`}>Excluir</Link>|
+                    <Link href={`/contatos/${contato.id}/editar`}>Editar</Link> |
+                    <Link href={`/contatos/${contato.id}/excluir`}>Excluir</Link>
 
                   </td>
                   <td> 
