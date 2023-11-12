@@ -121,7 +121,7 @@ export default function Criar() {
               onChange={(event) => setTipo(event.target.value)}
             >
               <option value="Hid Coluna Rosca">Hid Coluna Rosca</option>
-              <option value="Hid Coluna Storze ">Hid Coluna Storze</option>
+              <option value="Hid Coluna Storz ">Hid Coluna Storz</option>
               <option value="Hid Caixa Rosca ">Hid Caixa Rosca</option>
               <option value="Hid Caixa Garra ">Hid Caixa Garra</option>
               <option value="Não informado ">Não informado </option>

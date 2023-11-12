@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body className={inter.className}>
         <div id="container">
           <header>
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
                 height={160}
               />
               <div className="escrita">
-                <h1>LOCALIZA FÁCIL - HIDRANTES PÚBLICOS</h1>
+                <h1>HIDRANTE PÚBLICO CANOAS - LOCALIZAÇÃO FÁCIL</h1>
                 <h2>CORPO DE BOMBEIROS MILITAR DE CANOAS/RS</h2>
               </div>
             </div>
