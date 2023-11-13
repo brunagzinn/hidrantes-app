@@ -9,7 +9,12 @@ const baseUrl =
 
 async function buscarContato(id) {
     try {
-        const resposta = await fetch(`${baseUrl}/api/contatos/${id}`, { cache: 'no-store' });
+        const resposta = await fetch(`${baseUrl}/api/contatos/${id}`, {
+            cache: 'no-store',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            }
+        });
         return await resposta.json();
     } catch (erro) {
         console.error(erro);
@@ -34,6 +39,9 @@ export default function Page({ params: { id } }) {
 
             const resposta = await fetch(`${baseUrl}/api/contatos/${contato.id}`, {
                 method: "DELETE",
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
             })
             if (resposta.ok) {
                 router.push("/contatos")
@@ -58,7 +66,7 @@ export default function Page({ params: { id } }) {
                     <p><strong>Longitude: </strong>{contato.longitude}</p>
                     <p><strong>Tipo: </strong>{contato.tipo}</p>
                 </div>
-                <div style={{display:"block"}}>
+                <div style={{ display: "block" }}>
                     <button onClick={handleDelete}>Excluir</button>
                     <Link href="/contatos" className={styles.espacamento}>Voltar</Link>
                 </div>

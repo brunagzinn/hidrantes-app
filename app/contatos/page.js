@@ -9,7 +9,13 @@ const baseUrl =
 
 async function buscarContatos(bairro) {
   try {
-    const resposta = await fetch(`${baseUrl}/api/contatos?bairro=${bairro}`, { cache: 'no-store' });
+    const token = localStorage.getItem("token");
+    const resposta = await fetch(`${baseUrl}/api/contatos?bairro=${bairro}`, {
+      cache: 'no-store',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
     return await resposta.json();
   } catch (erro) {
     console.error(erro);
@@ -64,9 +70,9 @@ export default function Page() {
                     <Link href={`/contatos/${contato.id}/excluir`}> Excluir</Link>
 
                   </td>
-                  <td> 
-                  <Link target='blank' href={`https://www.google.com/maps?q=${contato.latitude},${contato.longitude}`}>Localizar</Link>
-                    
+                  <td>
+                    <Link target='blank' href={`https://www.google.com/maps?q=${contato.latitude},${contato.longitude}`}>Localizar</Link>
+
                   </td>
 
                   <td>{contato.nome}</td>

@@ -29,7 +29,8 @@ export default function Criar() {
     const resposta = await fetch(`${baseUrl}/api/contatos`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(contato)
     })

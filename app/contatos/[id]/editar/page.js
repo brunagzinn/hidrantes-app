@@ -9,7 +9,12 @@ const baseUrl =
 
 async function buscarContato(id) {
     try {
-        const resposta = await fetch(`${baseUrl}/api/contatos/${id}`, { cache: 'no-store' });
+        const resposta = await fetch(`${baseUrl}/api/contatos/${id}`, {
+            cache: 'no-store',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            }
+        });
         return await resposta.json();
     } catch (erro) {
         console.error(erro);
@@ -20,13 +25,13 @@ async function buscarContato(id) {
 export default function Page({ params: { id } }) {
     const router = useRouter();
     const [contato, setContato] = useState({
-        nome: '', 
-        logradouro: '', 
-        bairro: '', 
-        cidade: '', 
-        uf: '', 
-        latitude: '', 
-        longitude: '', 
+        nome: '',
+        logradouro: '',
+        bairro: '',
+        cidade: '',
+        uf: '',
+        latitude: '',
+        longitude: '',
         tipo: ''
     })
     useEffect(() => {
@@ -48,7 +53,8 @@ export default function Page({ params: { id } }) {
         const resposta = await fetch(`${baseUrl}/api/contatos/${contato.id}`, {
             method: "PUT",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
             },
             body: JSON.stringify(contato)
         })
