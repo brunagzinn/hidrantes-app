@@ -157,7 +157,7 @@ export default function Page({ params: { id } }) {
                             >
                                 <option value="">Não informado</option>
                                 <option value="Hid Coluna Rosca">Hid Coluna Rosca</option>
-                                <option value="Hid Coluna Storze ">Hid Coluna Storze</option>
+                                <option value="Hid Coluna Storz ">Hid Coluna Storz</option>
                                 <option value="Hid Caixa Rosca ">Hid Caixa Rosca</option>
                                 <option value="Hid Caixa Garra ">Hid Caixa Garra</option>
                             </select>
