@@ -35,13 +35,12 @@ export default function Page() {
   return (
     <Authenticator>
       <div className={styles.container}>
-        <h1>Cadastro de Hidrantes</h1>
+        <h1>Cadastro de Usuários</h1>
         <Link href="/usuarios/criar" className={styles.botaoAdd}>Adicionar</Link>
         <div className={styles.principal}>
           <table className={styles.usuarios}>
             <thead>
               <tr>
-                <th></th>
                 <th></th>
                 <th>Username</th>
               </tr>
@@ -54,7 +53,7 @@ export default function Page() {
                       <Link href={`/usuarios/${usuario.id}/editar`}>Editar </Link>|
                       <Link href={`/usuarios/${usuario.id}/excluir`}> Excluir</Link>
                     </td>
-                    <td>{usuario.usarname}</td>
+                    <td>{usuario.username}</td>
                   </tr>
                 )
               }

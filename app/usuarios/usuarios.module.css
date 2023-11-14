@@ -1,71 +1,100 @@
-"use client"
-import { useState, useEffect } from 'react';
-import styles from './usuarios.module.css'
-import Link from 'next/link'
-import Authenticator from '@/src/components/authenticator';
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f8fa;
+  height: 100vh;
+  min-height: 100vh;
+  box-sizing: border-box;  
+  overflow: auto;  
+}
 
-const baseUrl =
-  (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");
+.container h1 {
+  color: #333;
+  margin-bottom: 2rem;
+}
 
-async function buscarUsuarios() {
-  try {
-    const token = localStorage.getItem('token');
-    const resposta = await fetch(`${baseUrl}/api/usuarios`, {
-      cache: 'no-store',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-    return await resposta.json();
-  } catch (erro) {
-    console.error(erro);
-    return [];
+.container .principal {
+  width: 100%;
+  max-width: 90%;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.container label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.container input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.container button {
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+  background-color: #0056b3;
+}
+
+.espacamento {
+  margin-left: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .container form {
+      padding: 1rem;
   }
 }
 
-export default function Page() {
-
-  const [usuarios, setUsuarios] = useState([])
-
-  useEffect(() => {
-    buscarUsuarios().then(results => {
-      setUsuarios(results);
-    })
-  }, [])
-  return (
-    <Authenticator>
-      <div className={styles.container}>
-        <h1>Olá NextJS - Usuarios Page</h1>
-        <Link href="/usuarios/criar">Criar</Link>
-        <div className={styles.principal}>
-          
-          <table className={styles.usuarios}>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Username</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                usuarios.map((usuario) =>
-                  <tr key={usuario.id}>
-                    <td>
-                      <Link href={`/usuarios/${usuario.id}/editar`}>Editar</Link> | <Link href={`/usuarios/${usuario.id}/excluir`}>Excluir</Link>
-                    </td>
-                    <td>{usuario.username}</td>
-                  </tr>
-                )
-              }
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan="2">Total usuarios: {usuarios.length}</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-      </div>
-    </Authenticator>
-  )
+.usuarios {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
+
+.usuarios td,
+.usuarios th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.usuarios tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.usuarios tr:hover {
+  background-color: #ddd;
+}
+
+.usuarios th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+

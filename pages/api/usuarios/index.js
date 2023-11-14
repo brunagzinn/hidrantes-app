@@ -1,24 +1,32 @@
-import jwt from 'jsonwebtoken'
+import authMiddleware from "@/src/authMiddleware";
 import { sql } from "@vercel/postgres"
 
-const chaveSecreta = process.env.JWT_SECRET ?? '123123'
 export default async function handler(req, res) {
-    if (req.method === 'POST') {
-        const { username, password } = req.body
+  return authMiddleware(async (req, res) => {
+    if (req.method === 'GET') {
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
 
-        if (!username || !password) {
-            return res.status(400).json({error: "Preencha todos os campos no body da requisição"})
-        }
+      const { rows } = await sql` select * 
+                                  from usuarios
+                                  order by username `;
+      res.json(rows);
+      return;
+    } else if (req.method === 'POST') {
+      const { username, password } = req.body;
 
-        const { rows } = await sql`select * from usuarios where username = ${username} AND password = ${password}`;
-
-        if (rows.length > 0) {
-            const token = jwt.sign({ username }, chaveSecreta, { expiresIn: '24h' })
-            res.status(200).json({ token })
-        } else {
-            res.status(401).end();
-        }
-    } else {
-        res.status(405).end();
+      try {
+        await sql`insert into usuarios (username, password) 
+                values (${username},${password})`
+        res.status(201).end();
+      } catch (error) {
+        res.status(500).json({ error: error.message })
+      }
+      return;
     }
+
+    res.status(405).end();
+    return;
+  })(req, res);
 }
