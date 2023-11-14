@@ -53,6 +53,7 @@ export default function Page({ params: { id } }) {
     }
 
     return (
+        <Authenticator>
         <div className={styles.container}>
             <h1>Excluir hidrante</h1>
             <div className={styles.principal}>
@@ -72,5 +73,6 @@ export default function Page({ params: { id } }) {
                 </div>
             </div>
         </div>
+        </Authenticator>
     );
 }

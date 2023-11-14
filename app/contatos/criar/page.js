@@ -43,6 +43,7 @@ export default function Criar() {
   }
 
   return (
+    <Authenticator>
     <div className={styles.container}>
       <h1>Cadastro de Hidrante</h1>
       <div className={styles.principal}>
@@ -133,5 +134,6 @@ export default function Criar() {
         </form>
       </div>
     </div>
-  );
-}
+   </Authenticator>
+   );
+ }

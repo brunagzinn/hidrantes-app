@@ -67,6 +67,7 @@ export default function Page({ params: { id } }) {
     }
 
     return (
+        <Authenticator>
         <div className={styles.container}>
             <h1>Atualizar hidrante</h1>
             <div className={styles.principal}>
@@ -166,5 +167,6 @@ export default function Page({ params: { id } }) {
                 </form>
             </div>
         </div>
+    </Authenticator>
     );
-}
+  }
