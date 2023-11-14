@@ -1,17 +1,16 @@
 "use client"
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation'
-import styles from './contatos.module.css'
+import styles from './usuarios.module.css'
 import Link from 'next/link'
 import Authenticator from '@/src/components/authenticator';
 
 const baseUrl =
   (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");
 
-async function buscarContatos(bairro) {
+async function buscarUsuarios() {
   try {
     const token = localStorage.getItem("token");
-    const resposta = await fetch(`${baseUrl}/api/contatos?bairro=${bairro}`, {
+    const resposta = await fetch(`${baseUrl}/api/usuarios`, {
       cache: 'no-store',
       headers: {
         'Authorization': `Bearer ${token}`
@@ -25,82 +24,49 @@ async function buscarContatos(bairro) {
 }
 
 export default function Page() {
-
-  const searchParams = useSearchParams()
-  const search = searchParams.get('bairro')
-  const [bairro, setBairro] = useState(search ?? '');
-  const [contatos, setContatos] = useState([])
+  const [usuarios, setUsuarios] = useState([])
 
   useEffect(() => {
 
-    buscarContatos(bairro).then(results => {
-      setContatos(results);
+    buscarUsuarios().then(results => {
+      setUsuarios(results);
     })
-  }, [bairro])
+  }, [])
   return (
     <Authenticator>
-    <div className={styles.container}>
-      <h1>Cadastro de Hidrantes</h1>
-      <Link href="/contatos/criar" className={styles.botaoAdd}>Adicionar</Link>
-      <div className={styles.principal}>
-        <input
-          value={bairro}
-          onChange={event => setBairro(event.target.value)}
-          placeholder='Pesquisa por bairro...'
-        />
-        <table className={styles.contatos}>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th>Nome</th>
-              <th>Logradouro</th>
-              <th>Bairro</th>
-              <th>Cidade</th>
-              <th>UF</th>
-              <th>Latitude-S</th>
-              <th>Longitude-W</th>
-              <th>Tipo</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              contatos.map((contato) =>
-                <tr key={contato.id}>
-                  <td>
-                    <Link href={`/contatos/${contato.id}/editar`}>Editar </Link>|
-                    <Link href={`/contatos/${contato.id}/excluir`}> Excluir</Link>
-
-                  </td>
-                  <td>
-                    <Link target='blank' href={`https://www.google.com/maps?q=${contato.latitude},${contato.longitude}`}>Localizar</Link>
-
-                  </td>
-
-                  <td>{contato.nome}</td>
-                  <td>{contato.logradouro}</td>
-                  <td>{contato.bairro}</td>
-                  <td>{contato.cidade}</td>
-                  <td>{contato.uf}</td>
-                  <td>{contato.latitude}</td>
-                  <td>{contato.longitude}</td>
-                  <td>{contato.tipo}</td>
-
-
-                </tr>
-
-
-              )
-            }
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan="9">Total de hidrantes: {contatos.length}</td>
-            </tr>
-          </tfoot>
-        </table>
+      <div className={styles.container}>
+        <h1>Cadastro de Hidrantes</h1>
+        <Link href="/usuarios/criar" className={styles.botaoAdd}>Adicionar</Link>
+        <div className={styles.principal}>
+          <table className={styles.usuarios}>
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Username</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                usuarios.map((usuario) =>
+                  <tr key={usuario.id}>
+                    <td>
+                      <Link href={`/usuarios/${usuario.id}/editar`}>Editar </Link>|
+                      <Link href={`/usuarios/${usuario.id}/excluir`}> Excluir</Link>
+                    </td>
+                    <td>{usuario.usarname}</td>
+                  </tr>
+                )
+              }
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colSpan="2">Total de usuários: {usuarios.length}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
-    </div>
     </Authenticator>
-    )
+  )
 }
