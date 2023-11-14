@@ -46,7 +46,7 @@ export default function Criar() {
           <div>
             <label>Username: </label>
             <input
-              value={Username}
+              value={username}
               onChange={(event) => setUsername(event.target.value)}
               type="text" />
           </div>
