@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "../../contatos.module.css"
 import { useRouter } from "next/navigation";
+import Authenticator from '@/src/components/authenticator';
 
 const baseUrl =
     (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");

@@ -38,7 +38,6 @@ export default function Page() {
     })
   }, [bairro])
   return (
-    <Authenticator>
     <div className={styles.container}>
       <h1>Cadastro de Hidrantes</h1>
       <Link href="/contatos/criar" className={styles.botaoAdd}>Adicionar</Link>
@@ -101,6 +100,5 @@ export default function Page() {
         </table>
       </div>
     </div>
-    </Authenticator>
-    )
+  )
 }
