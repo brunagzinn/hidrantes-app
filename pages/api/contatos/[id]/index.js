@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         res.json(rows[0] || null);
         return;
     } else if (req.method === 'PUT') {
-        const { nome, logradouro, bairro, cidade, uf, longitude, latitude, tipo } = req.body;
+        const { nome, logradouro, bairro, cidade, uf, longitude, latitude, tipo, observacao, pressao, vazao, data } = req.body;
         try {
             await sql`
                 update contatos
@@ -23,12 +23,17 @@ export default async function handler(req, res) {
                   uf = ${uf}, 
                   latitude = ${latitude}, 
                   longitude = ${longitude}, 
-                  tipo = ${tipo}
+                  tipo = ${tipo},
+                  observacao = ${observacao},
+                  pressao = ${pressao},
+                  vazao = ${vazao},
+                  data = ${data}
                 where id = ${req.query.id}
             `
             res.status(201).end();
         }
         catch (error) {
+            console.log
             res.status(500).json({ error: error.message })
         }
         return;

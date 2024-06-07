@@ -25,7 +25,7 @@ async function buscarContato(id) {
 
 export default function Page({ params: { id } }) {
     const router = useRouter();
-    const [contato, setContato] = useState({ nome: '', logradouro: '', bairro: '', cidade: '', uf: '', latitude: '', longitude: '', tipo: '' })
+    const [contato, setContato] = useState({ nome: '', logradouro: '', bairro: '', cidade: '', uf: '', latitude: '', longitude: '', tipo: '', observacao: '', vazao: '', pressao: '', data: '' })
     useEffect(() => {
         async function fetchData() {
             const data = await buscarContato(id)
@@ -66,7 +66,11 @@ export default function Page({ params: { id } }) {
                     <p><strong>UF: </strong>{contato.uf}</p>
                     <p><strong>Latitude: </strong>{contato.latitude}</p>
                     <p><strong>Longitude: </strong>{contato.longitude}</p>
+                    <p><strong>Vazão: </strong>{contato.vazao}</p>
+                    <p><strong>Pressão: </strong>{contato.pressao}</p>
+                    <p><strong>Data da última vistoria: </strong>{contato.datadaultimavistoria}</p>
                     <p><strong>Tipo: </strong>{contato.tipo}</p>
+                    <p><strong>Observacao: </strong>{contato.observacao}</p>
                 </div>
                 <div style={{ display: "block" }}>
                     <button onClick={handleDelete}>Excluir</button>

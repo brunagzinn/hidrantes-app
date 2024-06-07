@@ -19,12 +19,16 @@ export default function Criar() {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [tipo, setTipo] = useState("");
+  const [observacao, setObservacao] = useState("");
+  const [vazao, setVazao] = useState("");
+  const [pressao, setPressao] = useState("");
+  const [data, setData] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const contato = {
-      nome, logradouro, bairro, cidade, uf, latitude, longitude, tipo
+      nome, logradouro, bairro, cidade, uf, latitude, longitude,vazao, pressao, datadaultimavistoria, tipo, observacao
     }
 
     const resposta = await fetch(`${baseUrl}/api/contatos`, {
@@ -118,6 +122,27 @@ export default function Criar() {
               type="number" />
           </div>
           <div>
+            <label>Vazão: </label>
+            <input
+              value={vazao}
+              onChange={(event) => setVazao(event.target.value)}
+              type="text" />
+          </div>
+          <div>
+            <label>Pressão: </label>
+            <input
+              value={pressao}
+              onChange={(event) => setPressao(event.target.value)}
+              type="text" />
+          </div>
+          <div>
+            <label>Data da última vistoria: </label>
+            <input
+              value={datadaultimavistoria}
+              onChange={(event) => setDatadaultimavistoria(event.target.value)}
+              type="text " />
+          </div>
+          <div>
             <label>tipo: </label>
             <select
               value={tipo}
@@ -130,6 +155,16 @@ export default function Criar() {
               <option value="Não informado ">Não informado </option>
             </select>
           </div>
+          <div>
+            <label>observacao: </label>
+            <input
+              value={observacao}
+              onChange={(event) => setObservacao(event.target.value)}
+              type="text" />
+          </div>
+
+
+
           <button type="submit">Cadastrar</button>
           <Link href="/contatos" className={styles.espacamento}>Voltar</Link>
         </form>

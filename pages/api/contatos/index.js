@@ -24,11 +24,23 @@ export default async function handler(req, res) {
       }
       return;
     } else if (req.method === 'POST') {
-      const { nome, logradouro, bairro, cidade, uf, longitude, latitude, tipo } = req.body;
+      const { nome, 
+        logradouro, 
+        bairro, 
+        cidade, 
+        uf, 
+        longitude, 
+        latitude, 
+        tipo,
+        observacao,
+        pressao,
+        vazao,
+        data 
+       } = req.body;
 
       try {
-        await sql`insert into contatos (nome, logradouro, bairro, cidade, uf, longitude, latitude, tipo) 
-                values (${nome}, ${logradouro}, ${bairro}, ${cidade}, ${uf}, ${latitude}, ${longitude}, ${tipo})`;
+        await sql`insert into contatos (nome, logradouro, bairro, cidade, uf, longitude, latitude, tipo, observacao, pressao, vazao, data) 
+                values (${nome}, ${logradouro}, ${bairro}, ${cidade}, ${uf}, ${latitude}, ${longitude}, ${tipo}, ${observacao}, ${pressao}, ${vazao}, ${data})`;
         res.status(201).end();
       } catch (error) {
         res.status(500).json({ error: error.message });

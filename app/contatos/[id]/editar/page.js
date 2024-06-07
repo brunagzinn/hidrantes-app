@@ -33,7 +33,11 @@ export default function Page({ params: { id } }) {
         uf: '',
         latitude: '',
         longitude: '',
-        tipo: ''
+        pressao: '',
+        vazao: '',
+        tipo: '',
+        observacao: '',
+        data: ''
     })
     useEffect(() => {
         async function fetchData() {
@@ -149,6 +153,30 @@ export default function Page({ params: { id } }) {
                                 type="number" />
                         </div>
                         <div>
+                            <label>Vazão: </label>
+                            <input
+                                value={contato.vazao}
+                                name="vazao"
+                                onChange={handleChange}
+                                type="text" />
+                        </div>
+                        <div>
+                            <label>Pressão: </label>
+                            <input
+                                value={contato.pressao}
+                                name="pressao"
+                                onChange={handleChange}
+                                type="text" />
+                        </div>
+                        <div>
+                            <label>Data da última vistoria: </label>
+                            <input
+                                value={contato.datadaultimavistoria}
+                                name="datadaultimavistoria"
+                                onChange={handleChange}
+                                type="text" />
+                        </div>
+                        <div>
                             <label>Tipo: </label>
                             <select
                                 value={contato.tipo}
@@ -161,6 +189,14 @@ export default function Page({ params: { id } }) {
                                 <option value="Hid Caixa Rosca ">Hid Caixa Rosca</option>
                                 <option value="Hid Caixa Garra ">Hid Caixa Garra</option>
                             </select>
+                            <div>
+                            <label>Observação: </label>
+                            <input
+                                value={contato.observacao}
+                                name="observacao"
+                                onChange={handleChange}
+                                type="text" />
+                        </div>
                         </div>
 
                         <button type="submit">Atualizar</button>
