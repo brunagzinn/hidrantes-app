@@ -22,7 +22,7 @@ export default function Criar() {
   const [observacao, setObservacao] = useState("");
   const [vazao, setVazao] = useState("");
   const [pressao, setPressao] = useState("");
-  const [data, setData] = useState("");
+  const [datadaultimavistoria, setDatadaultimavistoria] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();

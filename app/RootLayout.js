@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { inter } from './layout';
+import { Providers } from './providers';
 
 
 export default function RootLayout({ children }) {
