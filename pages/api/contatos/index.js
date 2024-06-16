@@ -9,11 +9,18 @@ export default async function handler(req, res) {
       res.setHeader('Pragma', 'no-cache');
       res.setHeader('Expires', '0');
 
-      if (req.query.bairro) {
-        const bairroLike = `%${req.query.bairro}%`
+      if (req.query.bairro || req.query.logradouro || req.query.nome || req.query.tipo) {
+        const bairroLike = req.query.bairro? `%${req.query.bairro}%` : `%`
+        const logradouroLike = req.query.logradouro? `%${req.query.logradouro}%` : `%`
+        const nomeLike = req.query.nome? `%${req.query.nome}%` : `%`
+        const tipoLike = req.query.tipo? `%${req.query.tipo}%` : `%`
         const { rows } = await sql` select * 
                                   from contatos 
-                                  where upper(bairro) like upper(${bairroLike})
+                                  where 1=1
+                                  and upper(bairro) like upper(${bairroLike})
+                                  and upper(logradouro) like upper(${logradouroLike})
+                                  and upper(nome) like upper(${nomeLike}) 
+                                  and upper(tipo) like upper(${tipoLike}) 
                                   order by nome`;
         res.json(rows);
       } else {
