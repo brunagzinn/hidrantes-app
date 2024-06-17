@@ -38,7 +38,7 @@ export default function Login() {
     return <div className={styles.container}>
         <h1>Login</h1>
         <div className={styles.principal}>
-            <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
                 <div>
                     <label>Username</label>
                     <input
@@ -60,6 +60,7 @@ export default function Login() {
                 <button type="submit">Login</button>
                 {error && <p>{error}</p>}
             </form>
+           
         </div>
     </div>
 }

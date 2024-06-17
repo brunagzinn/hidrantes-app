@@ -76,7 +76,9 @@ export default function Page() {
       </Modal>
 
 
-      <h1>Cadastro de Hidrantes</h1>
+      <h2 class="text-center text-4xl font-extrabold dark:text-white">Cadastro de hidrantes</h2>
+      <p class="text-center	my-4 text-lg text-gray-500">Cadastre novos hidrantes.</p>
+
       <Link href="/contatos/criar" className={styles.botaoAdd}>Adicionar</Link>
       <div className={styles.principal}>
         <input
@@ -87,7 +89,7 @@ export default function Page() {
         <table className={styles.contatos}>
           <thead>
             <tr>
-              <th></th>
+              <th>Mais Opçoes</th>
               <th></th>
               <th>Nome</th>
               <th>Logradouro</th>

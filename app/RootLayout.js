@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { inter } from './layout';
 import { Providers } from './providers';
+import { Foot } from './foot';
 
 
 export default function RootLayout({ children }) {
@@ -40,7 +41,6 @@ export default function RootLayout({ children }) {
               </Providers>
             </section>
           </main>
-          <footer><h2></h2></footer>
         </div>
       </body>
     </html>

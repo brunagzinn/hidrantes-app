@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {margin: 0;
-overflow: hidden;}
+body {
+margin: 0;
+overflow: hidden;
+}
 
 ul.topnav {
   list-style-type: none;

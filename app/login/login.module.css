@@ -18,7 +18,6 @@
 
 .container .principal {
     width: 100%;
-    max-width: 90%;
     background-color: #fff;
     padding: 1.5rem;
     border-radius: 8px;
@@ -68,4 +67,16 @@
     .container form {
         padding: 1rem;
     }
+}
+
+@media (min-width: 600px) {
+    .container .principal {
+        width: 60%;
+}
+}
+
+@media (min-width: 800px) {
+    .container .principal {
+        width: 40%;
+}
 }
