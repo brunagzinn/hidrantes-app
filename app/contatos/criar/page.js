@@ -48,32 +48,20 @@ export default function Criar() {
   }
 
   return (
-
+    
       <Authenticator>
-          <div className={styles.container}>
-            <h1>Cadastro de Hidrante</h1>
-            <div className={styles.principal}>
-              <form onSubmit={handleSubmit}>
-                <div>
-                  <label>nome: </label>
-                  <input
-                    value={nome}
-                    onChange={(event) => setNome(event.target.value)}
-                    type="text" />
-                </div>
-                <div>
-                  <label>logradouro: </label>
-                  <input
-                    value={logradouro}
-                    onChange={(event) => setLogradouro(event.target.value)}
-                    type="text" />
-                </div>
-                <div>
-                  <label>bairro: </label>
-                  <select
-                    value={bairro}
-                    onChange={(event) => setBairro(event.target.value)}
-                  >
+          <h2 class="text-4xl text-center font-bold dark:text-white">Cadastro de Hidrante</h2>
+            <form class="max-w-md mx-auto mt-10" onSubmit={handleSubmit}>
+              <div class="relative z-0 w-full mb-5 group">
+                  <input type="text" name="nome-hidrante" id="nome-hidrante" value={nome} onChange={(event) => setNome(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                  <label for="nome-hidrante" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nome do Hidrante</label>
+              </div>
+              <div class="relative z-0 w-full mb-5 group">
+                  <input type="text" name="text-logradouro" id="floating_password" value={logradouro}onChange={(event) => setLogradouro(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                  <label for="text-logradouro" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Logradouro</label>
+              </div>
+              <div class="relative z-0 w-full mb-5 group">
+                <select id="bairro-select" name="bairro-select" value={bairro} onChange={(event) => setBairro(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                     <option value="Brigadeira">Brigadeira</option>
                     <option value="Centro">Centro</option>
                     <option value="Estância Velha">Estância Velha</option>
@@ -92,85 +80,57 @@ export default function Criar() {
                     <option value="Rio Branco">Rio Branco</option>
                     <option value="São José">São José</option>
                     <option value="São Luiz">São Luiz</option>
-                  </select>
+                </select>
+              <label for="bairro-select" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500">Bairro</label>
+            </div>
+              <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="text-cidade" id="text-cidade" value={cidade} onChange={(event) => setCidade(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                    <label for="text-cidade" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Cidade</label>
                 </div>
-                <div>
-                  <label>cidade: </label>
-                  <input
-                    value={cidade}
-                    onChange={(event) => setCidade(event.target.value)}
-                  />
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="text-uf" id="text-uf" value={uf} onChange={(event) => setUf(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                    <label for="text-uf" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">UF</label>
                 </div>
-                <div>
-                  <label>uf: </label>
-                  <input
-                    value={uf}
-                    onChange={(event) => setUf(event.target.value)}
-                  />
+              </div>
+              <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="latitude-number" id="latitude-number" value={latitude} onChange={(event) => setLatitude(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                    <label for="latitude-number" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Latitude (S)</label>
                 </div>
-                <div>
-                  <label>latitude (S): </label>
-                  <input
-                    value={latitude}
-                    onChange={(event) => setLatitude(event.target.value)}
-                    type="number" />
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="number" name="longitude-number" id="longitude-number" value={longitude} onChange={(event) => setLongitude(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                    <label for="longitude-number" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Longitude (W)</label>
                 </div>
-                <div>
-                  <label>longitude (W): </label>
-                  <input
-                    value={longitude}
-                    onChange={(event) => setLongitude(event.target.value)}
-                    type="number" />
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="vazao-text" id="vazao-text" value={vazao} onChange={(event) => setVazao(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                    <label for="vazao-text" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Vazão</label>
                 </div>
-                <div>
-                  <label>Vazão: </label>
-                  <input
-                    value={vazao}
-                    onChange={(event) => setVazao(event.target.value)}
-                    type="text" />
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="pressao-text" id="pressao-text" value={pressao} onChange={(event) => setPressao(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    <label for="pressao-text" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pressão</label>
                 </div>
-                <div>
-                  <label>Pressão: </label>
-                  <input
-                    value={pressao}
-                    onChange={(event) => setPressao(event.target.value)}
-                    type="text" />
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="data-vistoria" id="data-vistoria" value={datadaultimavistoria} onChange={(event) => setDatadaultimavistoria(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    <label for="data-vistoria" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Data da última vistoria</label>
                 </div>
-                <div>
-                  <label>Data da última vistoria: </label>
-                  <input
-                    value={datadaultimavistoria}
-                    onChange={(event) => setDatadaultimavistoria(event.target.value)}
-                    type="text " />
-                </div>
-                <div>
-                  <label>tipo: </label>
-                  <select
-                    value={tipo}
-                    onChange={(event) => setTipo(event.target.value)}
-                  >
+                <div class="relative z-0 w-full mb-5 group">
+                  <select id="custom_select" name="custom_select" value={tipo} onChange={(event) => setTipo(event.target.value)} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                     <option value="Hid Coluna Rosca">Hid Coluna Rosca</option>
                     <option value="Hid Coluna Storz ">Hid Coluna Storz</option>
                     <option value="Hid Caixa Rosca ">Hid Caixa Rosca</option>
                     <option value="Hid Caixa Garra ">Hid Caixa Garra</option>
                     <option value="Não informado ">Não informado </option>
                   </select>
-                </div>
-                <div>
-                  <label>observacao: </label>
-                  <input
-                    value={observacao}
-                    onChange={(event) => setObservacao(event.target.value)}
-                    type="text" />
-                </div>
-
-
-
-                <button type="submit">Cadastrar</button>
-                <Link href="/contatos" className={styles.espacamento}>Voltar</Link>
-              </form>
+              <label for="custom_select" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500">Tipo de hidrante</label>
             </div>
-          </div>
+              </div>
+              <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Observação</label>
+              <textarea id="message" rows="4" value={observacao} onChange={(event) => setObservacao(event.target.value)} class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Deixe aqui sua observaçao..."></textarea>
+              <br></br>
+              <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Cadastrar</button>
+              <Link href="/contatos" class='text-white bg-slate-400 hover:bg-slate-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ml-2'>Cancelar</Link>
+            </form>
         </Authenticator>
    
    );
