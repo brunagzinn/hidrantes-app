@@ -76,7 +76,7 @@ export default function Page() {
       </Modal>
 
 
-      <h2 class="text-4xl text-center font-bold dark:text-white">Hidrantes Dísponiveis</h2>
+      <h2 class="text-4xl text-center font-bold dark:text-white">Hidrantes Disponíveis</h2>
       <p class="text-center	my-4 text-lg text-gray-500">Cadastre novos hidrantes no botão abaixo.</p>
 
       <Link href="/contatos/criar" className={styles.botaoAdd}>Adicionar</Link>
