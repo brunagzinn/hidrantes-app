@@ -74,14 +74,14 @@ export default function Page() {
                   <p className='text-center'>Opções hidrantes:</p>
                 </div>
                 <div className='flex justify-center'>
-                <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Localizar</Link>
-                <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Editar</Link>
-                <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Excluir</Link>
-                <Link href="/contatos/criar" className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Adicionar</Link>
+                  <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Localizar</Link>
+                  <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Editar</Link>
+                  <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Excluir</Link>
+                  <Link href="/contatos/criar" className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Adicionar</Link>
                 </div>
               </ModalBody>
               <ModalFooter>
-                  <Button onClick={onClose} color="danger" variant='light'>Fechar</Button>
+                <Button onClick={onClose} color="danger" variant='light'>Fechar</Button>
               </ModalFooter>
             </>
           )}
@@ -90,43 +90,43 @@ export default function Page() {
 
 
       <h2 class="text-4xl text-center font-bold dark:text-white">Hidrantes Disponíveis</h2>
-      <p class="text-center	my-4 text-lg text-gray-500">Clique no botão 'detalhes' para obter mais opções</p>
+      <p class="text-center	my-4 text-lg text-gray-500">Clique no botão <strong>detalhes</strong> para obter mais opções</p>
 
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <input value={bairro} onChange={event => setBairro(event.target.value)} placeholder='Pesquisa por bairro...'/>
-            
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">Mais opçoes:</th>
-                        <th scope="col" class="px-6 py-3">Logradouro</th>
-                        <th scope="col" class="px-6 py-3">Bairro</th>
-                        <th scope="col" class="px-6 py-3">Cidade</th>
-                        <th scope="col" class="px-6 py-3">Tipo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-              contatos.map((contato) =>
-                    <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium">
+        <input value={bairro} onChange={event => setBairro(event.target.value)} placeholder='Pesquisa por bairro...' />
 
-                        <Button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => {setContatoDetalhe(contato);onOpen()}}>Detalhes</Button>
-                        </th>
-                        <td class="px-6 py-4">{contato.logradouro}</td>
-                        <td class="px-6 py-4">{contato.bairro}</td>
-                        <td class="px-6 py-4">{contato.cidade}</td>
-                        <td class="px-6 py-4">{contato.tipo}</td>
-                    </tr>
-)}
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td className='px-6 py-2' colSpan="9">Total de hidrantes: {contatos.length}</td>
-                  </tr>
-                </tfoot>
-            </table>
-        </div>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="px-6 py-3">Mais opçoes:</th>
+              <th scope="col" class="px-6 py-3">Logradouro</th>
+              <th scope="col" class="px-6 py-3">Bairro</th>
+              <th scope="col" class="px-6 py-3">Cidade</th>
+              <th scope="col" class="px-6 py-3">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              contatos.map((contato) =>
+                <tr key={contato.contatoId} class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                  <th scope="row" class="px-6 py-4 font-medium">
+
+                    <Button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { setContatoDetalhe(contato); onOpen() }}>Detalhes</Button>
+                  </th>
+                  <td class="px-6 py-4">{contato.logradouro}</td>
+                  <td class="px-6 py-4">{contato.bairro}</td>
+                  <td class="px-6 py-4">{contato.cidade}</td>
+                  <td class="px-6 py-4">{contato.tipo}</td>
+                </tr>
+              )}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td className='px-6 py-2' colSpan="9">Total de hidrantes: {contatos.length}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
 
     </div>
   )
