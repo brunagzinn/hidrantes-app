@@ -72,7 +72,7 @@ export default function Page() {
                   <p><strong>Observação: </strong>{contatoDetalhe.idade}</p>
                   {contatoDetalhe.imagem && (
                     <a href={`data:image/jpeg;base64,${contatoDetalhe.imagem}`} target="_blank" rel="noopener noreferrer">
-                      <Image src={`data:image/jpeg;base64,${contatoDetalhe.imagem}`} alt="Imagem do hidrante" className='mx-auto' width={200} height={200} style={{ objectFit: 'contain', maxWidth: '100%' }} />
+                      <Image src={`data:image/jpeg;base64,${contatoDetalhe.imagem}`} alt="Imagem do hidrante" className='mx-auto' width={200} height={200} style={{ objectFit: 'contain', width: '60%' }} />
                     </a>
                   )}
                 </div>
@@ -95,34 +95,34 @@ export default function Page() {
       </Modal>
 
 
-      <h2 class="text-4xl text-center font-bold dark:text-white">Hidrantes Disponíveis</h2>
-      <p class="text-center	my-4 text-lg text-gray-500">Clique no botão <strong>detalhes</strong> para obter mais opções</p>
+      <h2 className="text-4xl text-center font-bold dark:text-white">Hidrantes Disponíveis</h2>
+      <p className="text-center	my-4 text-lg text-gray-500">Clique no botão <strong>detalhes</strong> para obter mais opções</p>
 
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <input value={bairro} onChange={event => setBairro(event.target.value)} placeholder='Pesquisa por bairro...' />
 
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">Mais opçoes:</th>
-              <th scope="col" class="px-6 py-3">Logradouro</th>
-              <th scope="col" class="px-6 py-3">Bairro</th>
-              <th scope="col" class="px-6 py-3">Cidade</th>
-              <th scope="col" class="px-6 py-3">Tipo</th>
+              <th scope="col" className="px-6 py-3">Mais opçoes:</th>
+              <th scope="col" className="px-6 py-3">Logradouro</th>
+              <th scope="col" className="px-6 py-3">Bairro</th>
+              <th scope="col" className="px-6 py-3">Cidade</th>
+              <th scope="col" className="px-6 py-3">Tipo</th>
             </tr>
           </thead>
           <tbody>
             {
               contatos.map((contato) =>
-                <tr key={contato.id} class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                  <th scope="row" class="px-6 py-4 font-medium">
+                <tr key={contato.id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                  <th scope="row" className="px-6 py-4 font-medium">
 
-                    <Button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { setContatoDetalhe(contato); onOpen() }}>Detalhes</Button>
+                    <Button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { setContatoDetalhe(contato); onOpen() }}>Detalhes</Button>
                   </th>
-                  <td class="px-6 py-4">{contato.logradouro}</td>
-                  <td class="px-6 py-4">{contato.bairro}</td>
-                  <td class="px-6 py-4">{contato.cidade}</td>
-                  <td class="px-6 py-4">{contato.tipo}</td>
+                  <td className="px-6 py-4">{contato.logradouro}</td>
+                  <td className="px-6 py-4">{contato.bairro}</td>
+                  <td className="px-6 py-4">{contato.cidade}</td>
+                  <td className="px-6 py-4">{contato.tipo}</td>
                 </tr>
               )}
           </tbody>

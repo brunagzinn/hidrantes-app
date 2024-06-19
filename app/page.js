@@ -1,5 +1,3 @@
-import image from 'next/image'
-import styles from './page.module.css'
 import Image from 'next/image'
 
 export default function Home() {
@@ -7,8 +5,8 @@ export default function Home() {
         <div className="mapaCanoas flex flex-col justify-center	items-center">
           <br></br>
           <br></br>
-          <h2 class="text-center text-4xl font-extrabold dark:text-white">Selecione o bairro da ocorrência</h2>
-          <p class="text-center	my-4 text-lg text-gray-500">Encontre hidrantes com facilidade: clique no mapa do bairro da ocorrência.</p>
+          <h2 className="text-center text-4xl font-extrabold dark:text-white">Selecione o bairro da ocorrência</h2>
+          <p className="text-center	my-4 text-lg text-gray-500">Encontre hidrantes com facilidade: clique no mapa do bairro da ocorrência.</p>
 
           <Image
             src="/mapa-canoas.png"

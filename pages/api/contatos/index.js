@@ -86,7 +86,6 @@ export default async function handler(req, res) {
                   VALUES (${nome}, ${logradouro}, ${bairro}, ${cidade}, ${uf}, ${longitude}, ${latitude}, ${tipo}, ${observacao}, ${pressao}, ${vazao}, ${data}, ${imagemBase64})`;
         res.status(201).end();
       } catch (error) {
-        console.log(error);
         res.status(500).json({ error: error.message });
       }
       return;
