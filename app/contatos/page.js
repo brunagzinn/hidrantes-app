@@ -5,6 +5,7 @@ import styles from './contatos.module.css'
 import Link from 'next/link'
 import Authenticator from '@/src/components/authenticator';
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react';
+import Image from 'next/image';
 
 
 const baseUrl =
@@ -48,9 +49,9 @@ export default function Page() {
     })
   }, [bairro, logradouro, nome, tipo])
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ paddingBottom: "100px" }}>
 
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} className={styles.fullScreenModal}>
         <ModalContent>
           {(onClose) => (
             <>
@@ -69,14 +70,19 @@ export default function Page() {
                   <p><strong>Data da última vistoria: </strong>{contatoDetalhe.idade}</p>
                   <p><strong>Tipo: </strong>{contatoDetalhe.idade}</p>
                   <p><strong>Observação: </strong>{contatoDetalhe.idade}</p>
+                  {contatoDetalhe.imagem && (
+                    <a href={`data:image/jpeg;base64,${contatoDetalhe.imagem}`} target="_blank" rel="noopener noreferrer">
+                      <Image src={`data:image/jpeg;base64,${contatoDetalhe.imagem}`} alt="Imagem do hidrante" className='mx-auto' width={200} height={200} style={{ objectFit: 'contain', maxWidth: '100%' }} />
+                    </a>
+                  )}
                 </div>
                 <div className='mt-5'>
                   <p className='text-center'>Opções hidrantes:</p>
                 </div>
                 <div className='flex justify-center'>
                   <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Localizar</Link>
-                  <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Editar</Link>
-                  <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Excluir</Link>
+                  <Link href={`/contatos/${contatoDetalhe.id}/editar`} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Editar</Link>
+                  <Link href={`/contatos/${contatoDetalhe.id}/excluir`} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Excluir</Link>
                   <Link href="/contatos/criar" className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Adicionar</Link>
                 </div>
               </ModalBody>
@@ -108,7 +114,7 @@ export default function Page() {
           <tbody>
             {
               contatos.map((contato) =>
-                <tr key={contato.contatoId} class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                <tr key={contato.id} class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                   <th scope="row" class="px-6 py-4 font-medium">
 
                     <Button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { setContatoDetalhe(contato); onOpen() }}>Detalhes</Button>
