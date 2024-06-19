@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 export function Navbar() {
   return (
     <navbar className="w-full relative">

@@ -48,9 +48,9 @@
     font-size: 1rem;
 }
 
-.container button, .espacamento, .botaoAdd {
+.espacamento, .botaoAdd {
     cursor: pointer;
-    background-color: #0077A5;
+    background-color: #94a3b8;
     color: #fff;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -61,7 +61,7 @@
 }
 
 .container button:hover, .espacamento:hover, .botaoAdd:hover {
-    background-color: #066991;
+    background-color: #64748b;
 }
 
 .espacamento {

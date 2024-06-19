@@ -55,11 +55,11 @@ export default function Page({ params: { id } }) {
 
     return (
         <Authenticator>
-        <div className={styles.container}>
-            <h1>Excluir hidrante</h1>
-            <div className={styles.principal}>
+        <h2 class="text-4xl mt-10 text-center font-bold dark:text-white">Excluir Hidrante?</h2>
+        <div className='flex items-center justify-center mt-20'>
+                <div class="max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nome do Hidrante: {contato.nome} </h5>
                 <div>
-                    <p><strong>Nome: </strong>{contato.nome}</p>
                     <p><strong>Logradouro: </strong>{contato.logradouro}</p>
                     <p><strong>Bairro: </strong>{contato.bairro}</p>
                     <p><strong>Cidade: </strong>{contato.cidade}</p>
@@ -70,13 +70,14 @@ export default function Page({ params: { id } }) {
                     <p><strong>Pressão: </strong>{contato.pressao}</p>
                     <p><strong>Data da última vistoria: </strong>{contato.datadaultimavistoria}</p>
                     <p><strong>Tipo: </strong>{contato.tipo}</p>
-                    <p><strong>Observacao: </strong>{contato.observacao}</p>
+                    <br></br>
+                    <p><strong>Observacao:</strong></p>
+                    <p class="mb-6 font-normal text-gray-700 dark:text-gray-400">{contato.observacao}</p>
                 </div>
-                <div style={{ display: "block" }}>
-                    <button onClick={handleDelete}>Excluir</button>
-                    <Link href="/contatos" className={styles.espacamento}>Voltar</Link>
+                    <button onClick={handleDelete} class="text-white mb-4 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Excluir</button>
+                    <Link href="/contatos" class='text-white bg-slate-400 hover:bg-slate-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ml-2'>Cancelar</Link>
                 </div>
-            </div>
+
         </div>
         </Authenticator>
     );
