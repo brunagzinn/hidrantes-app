@@ -12,6 +12,7 @@
     "@nextui-org/react": "^2.4.1",
     "@vercel/postgres": "^0.5.0",
     "autoprefixer": "^10.4.19",
+    "formidable": "^3.5.1",
     "framer-motion": "^11.2.10",
     "jsonwebtoken": "^9.0.2",
     "next": "13.5.4",
