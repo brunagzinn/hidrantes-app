@@ -10,10 +10,10 @@ import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDi
 const baseUrl =
   (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");
 
-async function buscarContatos(bairro) {
+async function buscarContatos(bairro, logradouro, nome, tipo) {
   try {
     const token = localStorage.getItem("token");
-    const resposta = await fetch(`${baseUrl}/api/contatos?bairro=${bairro}`, {
+    const resposta = await fetch(`${baseUrl}/api/contatos?bairro=${bairro}&logradouro=${logradouro}&nome=${nome}&tipo=${tipo}`, {
       cache: 'no-store',
       headers: {
         'Authorization': `Bearer ${token}`
@@ -31,20 +31,24 @@ export default function Page() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [contatoDetalhe, setContatoDetalhe] = useState(null);
 
-  const searchParams = useSearchParams()
-  const search = searchParams.get('bairro')
-  const [bairro, setBairro] = useState(search ?? '');
-  const [contatos, setContatos] = useState([])
+  const searchParams = useSearchParams();
+  const searchBairro = searchParams.get('bairro');
+  const searchLogradouro = searchParams.get('logradouro');
+  const searchNome = searchParams.get('nome');
+  const searchTipo = searchParams.get('tipo');
+  const [bairro, setBairro] = useState(searchBairro ?? '');
+  const [logradouro, setLogradouro] = useState(searchLogradouro ?? '');
+  const [nome, setNome] = useState(searchNome ?? '');
+  const [tipo, setTipo] = useState(searchTipo ?? '');
+  const [contatos, setContatos] = useState([]);
 
   useEffect(() => {
-
-    buscarContatos(bairro).then(results => {
+    buscarContatos(bairro, logradouro, nome, tipo).then(results => {
       setContatos(results);
     })
-  }, [bairro])
+  }, [bairro, logradouro, nome, tipo])
   return (
     <div className={styles.container}>
-
 
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
@@ -70,6 +74,7 @@ export default function Page() {
                   <p className='text-center'>Opções hidrantes:</p>
                 </div>
                 <div className='flex justify-center'>
+                <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Localizar</Link>
                 <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Editar</Link>
                 <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Excluir</Link>
                 <Link href="/contatos/criar" className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100  focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Adicionar</Link>
@@ -87,7 +92,7 @@ export default function Page() {
       <h2 class="text-4xl text-center font-bold dark:text-white">Hidrantes Disponíveis</h2>
       <p class="text-center	my-4 text-lg text-gray-500">Clique no botão 'detalhes' para obter mais opções</p>
 
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <input value={bairro} onChange={event => setBairro(event.target.value)} placeholder='Pesquisa por bairro...'/>
             
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
