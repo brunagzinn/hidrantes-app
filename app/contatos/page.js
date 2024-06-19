@@ -10,10 +10,10 @@ import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDi
 const baseUrl =
   (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");
 
-async function buscarContatos(bairro) {
+async function buscarContatos(bairro, logradouro, nome, tipo) {
   try {
     const token = localStorage.getItem("token");
-    const resposta = await fetch(`${baseUrl}/api/contatos?bairro=${bairro}`, {
+    const resposta = await fetch(`${baseUrl}/api/contatos?bairro=${bairro}&logradouro=${logradouro}&nome=${nome}&tipo=${tipo}`, {
       cache: 'no-store',
       headers: {
         'Authorization': `Bearer ${token}`
@@ -31,20 +31,24 @@ export default function Page() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [contatoDetalhe, setContatoDetalhe] = useState(null);
 
-  const searchParams = useSearchParams()
-  const search = searchParams.get('bairro')
-  const [bairro, setBairro] = useState(search ?? '');
-  const [contatos, setContatos] = useState([])
+  const searchParams = useSearchParams();
+  const searchBairro = searchParams.get('bairro');
+  const searchLogradouro = searchParams.get('logradouro');
+  const searchNome = searchParams.get('nome');
+  const searchTipo = searchParams.get('tipo');
+  const [bairro, setBairro] = useState(searchBairro ?? '');
+  const [logradouro, setLogradouro] = useState(searchLogradouro ?? '');
+  const [nome, setNome] = useState(searchNome ?? '');
+  const [tipo, setTipo] = useState(searchTipo ?? '');
+  const [contatos, setContatos] = useState([]);
 
   useEffect(() => {
-
-    buscarContatos(bairro).then(results => {
+    buscarContatos(bairro, logradouro, nome, tipo).then(results => {
       setContatos(results);
     })
-  }, [bairro])
+  }, [bairro, logradouro, nome, tipo])
   return (
     <div className={styles.container}>
-
 
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
@@ -81,11 +85,38 @@ export default function Page() {
 
       <Link href="/contatos/criar" className={styles.botaoAdd}>Adicionar</Link>
       <div className={styles.principal}>
-        <input
-          value={bairro}
-          onChange={event => setBairro(event.target.value)}
-          placeholder='Pesquisa por bairro...'
-        />
+        <div id='search' className={styles.filtros}>
+          <tr>
+            <th>Bairro: 
+              <input
+                value={bairro}
+                onChange={event => setBairro(event.target.value)}
+                placeholder='Pesquisa por bairro...'
+              />
+            </th>
+            <th>Logradouro: 
+              <input
+                value={logradouro}
+                onChange={event => setLogradouro(event.target.value)}
+                placeholder='Pesquisa por Logradouro...'
+              />
+            </th>
+            <th>Nome: 
+              <input
+                value={nome}
+                onChange={event => setNome(event.target.value)}
+                placeholder='Pesquisa por Nome...'
+              />
+            </th>
+            <th>Tipo: 
+              <input
+                value={tipo}
+                onChange={event => setTipo(event.target.value)}
+                placeholder='Pesquisa por Tipo...'
+              />
+            </th>
+          </tr>
+        </div>
         <table className={styles.contatos}>
           <thead>
             <tr>
@@ -94,6 +125,7 @@ export default function Page() {
               <th>Nome</th>
               <th>Logradouro</th>
               <th>Bairro</th>
+              <th>Tipo</th>
             </tr>
           </thead>
           <tbody>
@@ -113,14 +145,15 @@ export default function Page() {
                   </td>
                   <td>{contato.nome}</td>
                   <td>{contato.logradouro}</td>
-                  <td>{contato.bairro}</td>                  
+                  <td>{contato.bairro}</td> 
+                  <td>{contato.tipo}</td>                  
                 </tr>
               )
             }
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan="5">Total de hidrantes: {contatos.length}</td>
+              <td colSpan="6">Total de hidrantes: {contatos.length}</td>
             </tr>
           </tfoot>
         </table>
