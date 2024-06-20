@@ -1,6 +1,6 @@
 import authMiddleware from "@/src/authMiddleware";
 import { sql } from "@vercel/postgres";
-import formidable from "formidable";
+import formidable from "formidable"
 import fs from "fs";
 
 export const config = {
