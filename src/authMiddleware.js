@@ -13,9 +13,9 @@ const rotasPrivadas = [
     { path: '/api/usuarios', method: 'DELETE', allowedProfiles: ['Administrador'] },
 
     { path: '/api/contatos', method: 'GET', allowedProfiles: ['Administrador', 'Padrão'] },
-    { path: '/api/contatos', method: 'POST', allowedProfiles: ['Administrador'] },
+    { path: '/api/contatos', method: 'POST', allowedProfiles: ['Administrador', 'Padrão'] },
     { path: '/api/contatos', method: 'PUT', allowedProfiles: ['Administrador', 'Padrão'] },
-    { path: '/api/contatos', method: 'DELETE', allowedProfiles: ['Administrador', 'Padrão'] }
+    { path: '/api/contatos', method: 'DELETE', allowedProfiles: ['Administrador'] }
 ];
 
 export default function authMiddleware(handler) {
