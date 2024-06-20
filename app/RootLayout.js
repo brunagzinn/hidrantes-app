@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { inter } from './layout';
 import { Providers } from './providers';
 import { Foot } from './foot';
+import { AuthProvider } from '@/src/context/AuthContext';
 
 
 export default function RootLayout({ children }) {
@@ -37,7 +38,9 @@ export default function RootLayout({ children }) {
           <main>
             <section>
               <Providers>
-                {children}
+                <AuthProvider>
+                  {children}
+                </AuthProvider>
               </Providers>
             </section>
           </main>

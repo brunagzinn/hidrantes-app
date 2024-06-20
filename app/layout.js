@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import { Providers } from './providers'
 import { Navbar } from './navbar'
 import { Foot } from './foot'
+import { AuthProvider } from '@/src/context/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,12 +17,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-      <Navbar></Navbar>
-        <section className='h-[550px]'>
-          <Providers>
-            {children}
-          </Providers>
-        </section>
+        <AuthProvider>
+          <Navbar></Navbar>
+          <section className='h-[550px]'>
+            <Providers>
+              {children}
+            </Providers>
+          </section>
+        </AuthProvider>
       </body>
     </html>
   )
