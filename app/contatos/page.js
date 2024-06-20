@@ -43,7 +43,7 @@ export default function Page() {
     };
 
     fetchContatos();
-  }, [bairro, logradouro, nome, tipo, authenticatedFetch]);
+  }, [bairro, logradouro, nome, tipo]);
 
   return (
     <div className={styles.container}>

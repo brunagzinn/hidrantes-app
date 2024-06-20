@@ -1,15 +1,16 @@
 "use client"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import styles from "../contatos.module.css"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import styles from "../contatos.module.css";
 import Authenticator from '@/src/components/authenticator';
+import useAuthenticatedFetch from '@/src/hooks/useAuthenticatedFetch';
 
-const baseUrl =
-  (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");
+const baseUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
 
 export default function Criar() {
   const router = useRouter();
+  const authenticatedFetch = useAuthenticatedFetch();
 
   const [nome, setNome] = useState("");
   const [logradouro, setLogradouro] = useState("");
@@ -23,7 +24,7 @@ export default function Criar() {
   const [vazao, setVazao] = useState("");
   const [pressao, setPressao] = useState("");
   const [datadaultimavistoria, setDatadaultimavistoria] = useState("");
-  const [imagem, setImagem] = useState(null)
+  const [imagem, setImagem] = useState(null);
 
   const handleImageChange = (event) => {
     setImagem(event.target.files[0]);
@@ -49,20 +50,22 @@ export default function Criar() {
       formData.append("image", imagem);
     }
 
-    const resposta = await fetch(`${baseUrl}/api/contatos`, {
-      method: "POST",
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem("token")}`
-      },
-      body: formData
-    });
-    if (resposta.ok) {
-      router.push("/contatos")
+    try {
+      const resposta = await authenticatedFetch(`${baseUrl}/api/contatos`, {
+        method: "POST",
+        body: formData
+      });
+
+      if (resposta.ok) {
+        router.push("/contatos");
+      } else {
+        alert("Erro ao cadastrar hidrante");
+      }
+    } catch (error) {
+      console.error("Error submitting form", error);
+      alert("Erro ao cadastrar hidrante");
     }
-    else {
-      alert("Erro ao cadastrar hidrante")
-    }
-  }
+  };
 
   return (
     <Authenticator>
@@ -154,6 +157,5 @@ export default function Criar() {
         </form>
       </div>
     </Authenticator>
-
   );
 }
