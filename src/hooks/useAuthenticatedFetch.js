@@ -15,7 +15,7 @@ export default function useAuthenticatedFetch() {
 
     const response = await fetch(url, options);
 
-    if (response.status === 401) {
+    if (response.status === 401 || response.status === 403) {
       router.push('/login');  // Replace '/login' with your login page route
       return null;
     }
