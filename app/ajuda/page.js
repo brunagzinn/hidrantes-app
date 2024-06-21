@@ -11,44 +11,44 @@ export default function Home() {
             <p className="text-center my-4 text-lg text-gray-500">Clique no card que melhor representar a sua dúvida.</p>
 
             <div className='mt-10 md:container md:mx-auto flex align-center justify-center gap-4 flex-wrap'>
-                <a href="#comologar" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como entrar na minha conta?</h5>
+                <a href="#comologar" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como entrar na minha conta?</h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"> 
                     Dúvidas sobre como entrar na sua conta? Clique aqui.
                 </p>
                 </a>
 
-                <a href="#comocadastrar" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como cadastrar um hidrante?</h5>
+                <a href="#comocadastrar" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como cadastrar um hidrante?</h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">                    
                     Dúvidas sobre como cadastrar um hidrante? Clique aqui.
                 </p>
                 </a>
 
-                <a href="#comopreencher" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como preencher o cadastro de hidrante?</h5>
+                <a href="#comopreencher" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como preencher o cadastro de hidrante?</h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">                    
                     Dúvidas sobre como preencher o cadastro de um hidrante? Clique aqui.
                 </p>
                 </a>
 
 
-                <a href="#comoeditar-excluir" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Posso editar ou excluir um hidrante?</h5>
+                <a href="#comoeditar-excluir" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Posso editar ou excluir um hidrante?</h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"> 
                     Dúvidas sobre editar ou excluir um hidrante? Clique aqui.
                 </p>
                 </a>
 
-                <a href="#comolocalizar" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como posso localizar um hidrante mais rapidamente?</h5>
+                <a href="#comolocalizar" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como posso localizar um hidrante mais rapidamente?</h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"> 
                     Dúvidas sobre como localizar mais rapidamente o hidrante? Clique aqui.
                 </p>
 
                 </a>
-                <a href="#comoadministrar" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como administrar usuários?</h5>
+                <a href="#comoadministrar" className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Como administrar usuários?</h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"> 
                     Dúvidas sobre como administrar os usuários? Clique aqui.
                 </p>
@@ -60,7 +60,7 @@ export default function Home() {
                     <h2 className="text-4xl text-center font-bold dark:text-white">Mais informações</h2>
                     <p id="comologar" className="mb-3 text-lg text-gray-500 md:text-xl dark:text-gray-400">Como fazer entrar na sua conta?</p>
                     <p className="text-gray-500 dark:text-gray-400">
-                    1 - Na página inicial, localize o menu superior e clique em "Login". <br></br>
+                    1 - Na página inicial, localize o menu superior e clique em <strong>Login</strong>. <br></br>
                     2 - Você será direcionado para a página login.<br></br>
                     3 - Na página de login, Utilize suas credenciais de acesso para entrar no sistema.<br></br>
                     </p>
@@ -69,9 +69,9 @@ export default function Home() {
                     <br></br>
                     <p id="comocadastrar" className="mb-3 text-lg text-gray-500 md:text-xl dark:text-gray-400">Como cadastrar um hidrantes?</p>
                     <p className="text-gray-500 dark:text-gray-400">
-                    1 - Na página inicial, localize o menu superior e clique em "Hidrantes". <br></br>
+                    1 - Na página inicial, localize o menu superior e clique em <strong>Hidrantes</strong>. <br></br>
                     2 - Você será direcionado para a página de listagem de hidrantes.<br></br>
-                    3 - Na página de listagem, clique no botão "Adicionar Hidrante".<br></br>
+                    3 - Na página de listagem, clique no botão <strong>Adicionar Hidrante</strong>.<br></br>
                     4 - Será solicitado o login para realizar a ação de cadastro.<br></br>
                     5 - Utilize suas credenciais de acesso para entrar no sistema. <br></br>
                     </p>
@@ -96,9 +96,9 @@ export default function Home() {
                     <p id="comoeditar-excluir" className="mb-3 text-lg text-gray-500 md:text-xl dark:text-gray-400">Posso editar ou excluir um hidrante?</p>
                     <p className="text-gray-500 dark:text-gray-400">
                     Caso você tenha permissao de Administrador é possível editar ou excluir.<br></br>
-                    1 - Localize o menu superior e clique em "Hidrantes". <br></br>
+                    1 - Localize o menu superior e clique em <strong>Hidrantes</strong>. <br></br>
                     2 - Você será direcionado para a página de listagem de hidrantes.<br></br>
-                    3 - Na página de listagem, clique no botão "Detalhes".<br></br>
+                    3 - Na página de listagem, clique no botão <strong>Detalhes</strong>.<br></br>
                     4 - Abrirá uma aba com mais detalhes do hidrante já com as opçoes de editar ou excluir o hidrante selecionado.<br></br>
                     5 - Edite ou Exclua o hidrante desejado. <br></br>
                     </p>
@@ -108,9 +108,9 @@ export default function Home() {
                     <p id="comolocalizar" className="mb-3 text-lg text-gray-500 md:text-xl dark:text-gray-400">Como posso localizar um hidrante mais rapidamente?</p>
                     <p className="text-gray-500 dark:text-gray-400">
                     Caso você tenha permissao de Administrador é possível editar ou excluir.<br></br>
-                    1 - Localize o menu superior e clique em "Hidrantes". <br></br>
+                    1 - Localize o menu superior e clique em <strong>Hidrantes</strong>. <br></br>
                     2 - Você será direcionado para a página de listagem de hidrantes.<br></br>
-                    3 - Na página de listagem, clique no botão "Localizar".<br></br>
+                    3 - Na página de listagem, clique no botão <strong>Localizar</strong>.<br></br>
                     4 - Abrirá uma nova aba em seu navegador na página do google maps com a localizaçao do hidrante desejado<br></br>
                     </p>
                     <br></br>
@@ -119,10 +119,10 @@ export default function Home() {
                     <p id="comoadministrar" className="mb-3 text-lg text-gray-500 md:text-xl dark:text-gray-400">Como administrar usuários?</p>
                     <p className="text-gray-500 dark:text-gray-400">
                     Neste caso, é necessário que você seja um administrador. Já logado em sua conta siga o passo-a-passo:<br></br>
-                    1 - Localize o menu superior e clique em "Usuários". <br></br>
+                    1 - Localize o menu superior e clique em <strong>Usuários</strong>. <br></br>
                     2 - Você será direcionado para a página de usuários<br></br>
                     3 - Na página de usuários, localize o usuário que deseja administrar.<br></br>
-                    4 - Clique no botão "Detalhes" <br></br>
+                    4 - Clique no botão <strong>Detalhes</strong> <br></br>
                     5 - Abrirá uma aba com mais detalhes do usuário desejado. <br></br>
                     </p>
 
