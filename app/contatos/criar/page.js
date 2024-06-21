@@ -146,6 +146,7 @@ export default function Criar() {
             </div>
           </div>
           <div className="relative z-0 w-full mb-5 group">
+
             <label htmlFor="image-upload" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload da Imagem</label>
             <input type="file" name="image-upload" id="image-upload" onChange={handleImageChange} className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" />
           </div>

@@ -106,10 +106,10 @@ export default function Page() {
               <tr key={contato.id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <td className="px-6 py-4 flex justify-center">
                   <Button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { setContatoDetalhe(contato); onOpen(); }}>Detalhes</Button>
-                  <Link href='' className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Localizar</Link>
+                  <Link href={`https://www.google.com/maps?q=${contato.latitude},${contato.longitude}`} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-400 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Localizar</Link>
                 </td>
                 <td className="px-6 py-4">{contato.logradouro}</td>
-                <td className="px-6 py-4">{contato.cidade}</td>
+                <td className="px-6 py-4">{contato.bairro}</td>
                 <td className="px-6 py-4">{contato.tipo}</td>
               </tr>
             ))}
