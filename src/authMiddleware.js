@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 const chaveSecreta = process.env.JWT_SECRET ?? '123123';
 
 const rotasPublicas = [
-    { path: /^\/api\/contatos$/, method: 'GET' },
+    { path: /^\/api\/contatos(\?.*)?$/, method: 'GET' }, // Alterado para aceitar querystring
     { path: /^\/api\/contatos\/\d+\/imagem$/, method: 'GET' }
 ];
 
@@ -13,7 +13,7 @@ const rotasPrivadas = [
     { path: /^\/api\/usuarios$/, method: 'PUT', allowedProfiles: ['Administrador'] },
     { path: /^\/api\/usuarios$/, method: 'DELETE', allowedProfiles: ['Administrador'] },
 
-    { path: /^\/api\/contatos$/, method: 'GET', allowedProfiles: ['Administrador', 'Padrão'] },
+    { path: /^\/api\/contatos(\?.*)?$/, method: 'GET', allowedProfiles: ['Administrador', 'Padrão'] }, // Alterado para aceitar querystring
     { path: /^\/api\/contatos$/, method: 'POST', allowedProfiles: ['Administrador', 'Padrão'] },
     { path: /^\/api\/contatos$/, method: 'PUT', allowedProfiles: ['Administrador', 'Padrão'] },
     { path: /^\/api\/contatos$/, method: 'DELETE', allowedProfiles: ['Administrador'] }
