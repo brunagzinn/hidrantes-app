@@ -1,67 +1,63 @@
 "use client"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import styles from "../usuarios.module.css"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import styles from "../usuarios.module.css";
 import Authenticator from '@/src/components/authenticator';
 
-const baseUrl =
-  (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");
+const baseUrl = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000");
 
 export default function Criar() {
   const router = useRouter();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [newusername, setNewUsername] = useState("");
+  const [newpassword, setNewPassword] = useState("");
+  const [perfil, setPerfil] = useState("Padrão");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const usuario = {
-      username, password
-    }
+    const usuario = { username: newusername, password: newpassword, perfil };
 
     const resposta = await fetch(`${baseUrl}/api/usuarios`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem("token")}`
+        'Authorization': `Bearer ${localStorage.getItem("token")}`,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(usuario)
-    })
+    });
     if (resposta.ok) {
-      router.push("/usuarios")
+      router.push("/usuarios");
+    } else {
+      alert("Erro ao cadastrar usuário");
     }
-    else {
-      alert("Erro ao cadastrar usuário")
-    }
-  }
+  };
 
   return (
     <Authenticator>
-    <div className={styles.container}>
-      <h1>Cadastro de Usuário</h1>
-      <div className={styles.principal}>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Username: </label>
-            <input
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-              type="text" />
+      <div className={styles.scrollContainer}>
+        <h2 className="text-4xl text-center font-bold dark:text-white">Cadastro de Usuário</h2>
+        <form className="max-w-md mx-auto mt-10" onSubmit={handleSubmit}>
+          <div className="relative z-0 w-full mb-5 group">
+            <input type="text" name="newusername" id="newusername" value={newusername} onChange={(event) => setNewUsername(event.target.value)} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label htmlFor="newusername" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Username</label>
           </div>
-          <div>
-            <label>Password: </label>
-            <input
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              type="password" />
+          <div className="relative z-0 w-full mb-5 group">
+            <input type="newpassword" name="newpassword" id="newpassword" value={newpassword} onChange={(event) => setNewPassword(event.target.value)} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+            <label htmlFor="newpassword" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
           </div>
-          <button type="submit">Cadastrar</button>
-          <Link href="/usuarios" className={styles.espacamento}>Voltar</Link>
+          <div className="relative z-0 w-full mb-5 group">
+            <select id="perfil-select" name="perfil" value={perfil} onChange={(event) => setPerfil(event.target.value)} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+              <option value="Administrador">Administrador</option>
+              <option value="Padrão">Padrão</option>
+            </select>
+            <label htmlFor="perfil-select" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500">Perfil</label>
+          </div>
+          <button type="submit" className="text-white mb-4 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Cadastrar</button>
+          <Link href="/usuarios" className='text-white bg-slate-400 hover:bg-slate-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ml-2'>Cancelar</Link>
         </form>
       </div>
-    </div>
-   </Authenticator>
-   );
- }
+    </Authenticator>
+  );
+}

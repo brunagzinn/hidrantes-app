@@ -25,7 +25,7 @@ async function buscarContato(id) {
 
 export default function Page({ params: { id } }) {
     const router = useRouter();
-    const [contato, setContato] = useState({ nome: '', logradouro: '', bairro: '', cidade: '', uf: '', latitude: '', longitude: '', tipo: '' })
+    const [contato, setContato] = useState({ nome: '', logradouro: '', bairro: '', cidade: '', uf: '', latitude: '', longitude: '', tipo: '', observacao: '', vazao: '', pressao: '', data: '' })
     useEffect(() => {
         async function fetchData() {
             const data = await buscarContato(id)
@@ -55,25 +55,32 @@ export default function Page({ params: { id } }) {
 
     return (
         <Authenticator>
-        <div className={styles.container}>
-            <h1>Excluir hidrante</h1>
-            <div className={styles.principal}>
-                <div>
-                    <p><strong>Nome: </strong>{contato.nome}</p>
-                    <p><strong>Logradouro: </strong>{contato.logradouro}</p>
-                    <p><strong>Bairro: </strong>{contato.bairro}</p>
-                    <p><strong>Cidade: </strong>{contato.cidade}</p>
-                    <p><strong>UF: </strong>{contato.uf}</p>
-                    <p><strong>Latitude: </strong>{contato.latitude}</p>
-                    <p><strong>Longitude: </strong>{contato.longitude}</p>
-                    <p><strong>Tipo: </strong>{contato.tipo}</p>
-                </div>
-                <div style={{ display: "block" }}>
-                    <button onClick={handleDelete}>Excluir</button>
-                    <Link href="/contatos" className={styles.espacamento}>Voltar</Link>
+            <div className={styles.scrollContainer}>
+                <h2 className="text-4xl mt-10 text-center font-bold dark:text-white">Excluir Hidrante?</h2>
+                <div className='flex items-center justify-center mt-20'>
+                    <div className="max-w-lg p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nome do Hidrante: {contato.nome} </h5>
+                        <div>
+                            <p><strong>Logradouro: </strong>{contato.logradouro}</p>
+                            <p><strong>Bairro: </strong>{contato.bairro}</p>
+                            <p><strong>Cidade: </strong>{contato.cidade}</p>
+                            <p><strong>UF: </strong>{contato.uf}</p>
+                            <p><strong>Latitude: </strong>{contato.latitude}</p>
+                            <p><strong>Longitude: </strong>{contato.longitude}</p>
+                            <p><strong>Vazão: </strong>{contato.vazao}</p>
+                            <p><strong>Pressão: </strong>{contato.pressao}</p>
+                            <p><strong>Data da última vistoria: </strong>{contato.datadaultimavistoria}</p>
+                            <p><strong>Tipo: </strong>{contato.tipo}</p>
+                            <br></br>
+                            <p><strong>Observacao:</strong></p>
+                            <p className="mb-6 font-normal text-gray-700 dark:text-gray-400">{contato.observacao}</p>
+                        </div>
+                        <button onClick={handleDelete} className="text-white mb-4 bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Excluir</button>
+                        <Link href="/contatos" className='text-white bg-slate-400 hover:bg-slate-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ml-2'>Cancelar</Link>
+                    </div>
+
                 </div>
             </div>
-        </div>
         </Authenticator>
     );
 }

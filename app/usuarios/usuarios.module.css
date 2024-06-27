@@ -46,17 +46,16 @@
 
 .container button {
   cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #fff;
+  color: #111827;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  border: none;
+  border: solid 1px #d1d5db ;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
 }
 
 .container button:hover {
-  background-color: #0056b3;
+  background-color: #9ca3af;
 }
 
 .espacamento {
