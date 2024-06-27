@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         const logradouroLike = req.query.logradouro ? `%${req.query.logradouro}%` : `%`;
         const nomeLike = req.query.nome ? `%${req.query.nome}%` : `%`;
         const tipoLike = req.query.tipo ? `%${req.query.tipo}%` : `%`;
-        const { rows } = await sql`SELECT * 
+        const { rows } = await sql`SELECT id, nome, logradouro, bairro, cidade, uf, latitude, longitude, tipo, observacao, pressao, vazao, "data"
                                    FROM contatos 
                                    WHERE 1=1
                                    AND upper(bairro) LIKE upper(${bairroLike})
@@ -50,7 +50,7 @@ export default async function handler(req, res) {
                                    ORDER BY nome`;
         res.json(rows);
       } else {
-        const { rows } = await sql`SELECT * 
+        const { rows } = await sql`SELECT id, nome, logradouro, bairro, cidade, uf, latitude, longitude, tipo, observacao, pressao, vazao, "data"
                                    FROM contatos 
                                    ORDER BY nome`;
         res.json(rows);
@@ -75,12 +75,12 @@ export default async function handler(req, res) {
           data
         } = fields;
 
-        let imagemBase64 = null;        
+        let imagemBase64 = null;
         if (files.image) {
           const imageFile = files.image[0];
-          const imageBuffer = fs.readFileSync(imageFile.filepath);          
+          const imageBuffer = fs.readFileSync(imageFile.filepath);
           imagemBase64 = imageBuffer.toString("base64");
-        }        
+        }
 
         await sql`INSERT INTO contatos (nome, logradouro, bairro, cidade, uf, longitude, latitude, tipo, observacao, pressao, vazao, data, imagem) 
                   VALUES (${nome}, ${logradouro}, ${bairro}, ${cidade}, ${uf}, ${longitude}, ${latitude}, ${tipo}, ${observacao}, ${pressao}, ${vazao}, ${data}, ${imagemBase64})`;

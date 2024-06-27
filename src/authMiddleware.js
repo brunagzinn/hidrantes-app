@@ -3,26 +3,26 @@ import jwt from 'jsonwebtoken';
 const chaveSecreta = process.env.JWT_SECRET ?? '123123';
 
 const rotasPublicas = [
-    { path: '/api/contatos', method: 'GET' }
+    { path: /^\/api\/contatos$/, method: 'GET' },
+    { path: /^\/api\/contatos\/\d+\/imagem$/, method: 'GET' }
 ];
 
 const rotasPrivadas = [
-    { path: '/api/usuarios', method: 'GET', allowedProfiles: ['Administrador'] },
-    { path: '/api/usuarios', method: 'POST', allowedProfiles: ['Administrador'] },
-    { path: '/api/usuarios', method: 'PUT', allowedProfiles: ['Administrador'] },
-    { path: '/api/usuarios', method: 'DELETE', allowedProfiles: ['Administrador'] },
+    { path: /^\/api\/usuarios$/, method: 'GET', allowedProfiles: ['Administrador'] },
+    { path: /^\/api\/usuarios$/, method: 'POST', allowedProfiles: ['Administrador'] },
+    { path: /^\/api\/usuarios$/, method: 'PUT', allowedProfiles: ['Administrador'] },
+    { path: /^\/api\/usuarios$/, method: 'DELETE', allowedProfiles: ['Administrador'] },
 
-    { path: '/api/contatos', method: 'GET', allowedProfiles: ['Administrador', 'Padrão'] },
-    { path: '/api/contatos', method: 'POST', allowedProfiles: ['Administrador', 'Padrão'] },
-    { path: '/api/contatos', method: 'PUT', allowedProfiles: ['Administrador', 'Padrão'] },
-    { path: '/api/contatos', method: 'DELETE', allowedProfiles: ['Administrador'] }
+    { path: /^\/api\/contatos$/, method: 'GET', allowedProfiles: ['Administrador', 'Padrão'] },
+    { path: /^\/api\/contatos$/, method: 'POST', allowedProfiles: ['Administrador', 'Padrão'] },
+    { path: /^\/api\/contatos$/, method: 'PUT', allowedProfiles: ['Administrador', 'Padrão'] },
+    { path: /^\/api\/contatos$/, method: 'DELETE', allowedProfiles: ['Administrador'] }
 ];
 
 export default function authMiddleware(handler) {
     return (req, res) => {
-
         const rotaPublica = rotasPublicas.some(
-            (rota) => req.url.startsWith(rota.path) && req.method === rota.method
+            (rota) => rota.path.test(req.url) && req.method === rota.method
         );
 
         if (rotaPublica) {
@@ -42,7 +42,7 @@ export default function authMiddleware(handler) {
             req.perfil = perfil;
 
             const rotaPrivada = rotasPrivadas.find(
-                (rota) => req.url.startsWith(rota.path) && req.method === rota.method
+                (rota) => rota.path.test(req.url) && req.method === rota.method
             );
 
             if (rotaPrivada && !rotaPrivada.allowedProfiles.includes(perfil)) {

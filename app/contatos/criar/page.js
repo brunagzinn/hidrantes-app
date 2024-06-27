@@ -27,7 +27,16 @@ export default function Criar() {
   const [imagem, setImagem] = useState(null);
 
   const handleImageChange = (event) => {
-    setImagem(event.target.files[0]);
+    const file = event.target.files[0];
+    const maxSize = 200 * 1024; // Tamanho máximo em bytes (200KB)
+    console.log(file.size, maxSize)
+    if (file.size > maxSize) {
+      alert("A imagem excede o tamanho máximo de 200KB.");
+      setImagem(null);
+      event.target.value = null; // Limpar o campo de input
+    } else {
+      setImagem(file);
+    }
   };
 
   const handleSubmit = async (event) => {

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Authenticator from '@/src/components/authenticator';
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react';
 import useAuthenticatedFetch from '@/src/hooks/useAuthenticatedFetch';
+import Image from 'next/image';
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
 
@@ -13,6 +14,7 @@ export default function Page() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [contatoDetalhe, setContatoDetalhe] = useState(null);
   const [contatos, setContatos] = useState([]);
+  const [imagem, setImagem] = useState(null); 
   const authenticatedFetch = useAuthenticatedFetch();
 
   const searchParams = useSearchParams();
@@ -24,6 +26,19 @@ export default function Page() {
   const [logradouro, setLogradouro] = useState(searchLogradouro ?? '');
   const [nome, setNome] = useState(searchNome ?? '');
   const [tipo, setTipo] = useState(searchTipo ?? '');
+
+  const detalhes = async (contato) => {
+
+    // buscar imagem do hidrante na rota api/contatos/[id]/imagem
+
+    const response = await fetch(`/api/contatos/${contato.id}/imagem`);
+    const data = await response.json();
+    setImagem(data.imagem);
+    
+    setContatoDetalhe(contato);
+    onOpen();
+  
+  }
 
   useEffect(() => {
     const fetchContatos = async () => {
@@ -67,6 +82,11 @@ export default function Page() {
                   <p><strong>Tipo: </strong>{contatoDetalhe?.tipo}</p>
                   <p><strong>Observação: </strong>{contatoDetalhe?.observacao}</p>
                 </div>
+                {imagem && (
+                  <a href={`data:image/png;base64,${imagem}`} target="_blank" rel="noopener noreferrer">
+                    <Image src={`data:image/png;base64,${imagem}`} alt="Imagem do hidrante" className="w-1/2 mx-auto" width={100} height={100} />
+                  </a>
+                )}
                 <div className='mt-5'>
                   <p className='text-center'>Opções hidrantes:</p>
                 </div>
@@ -105,7 +125,7 @@ export default function Page() {
             {contatos.map((contato) => (
               <tr key={contato.id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <td className="px-6 py-4 flex justify-center">
-                  <Button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { setContatoDetalhe(contato); onOpen(); }}>Detalhes</Button>
+                  <Button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { detalhes(contato); }}>Detalhes</Button>
                   <Link href={`https://www.google.com/maps?q=${contato.latitude},${contato.longitude}`} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-400 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Localizar</Link>
                 </td>
                 <td className="px-6 py-4">{contato.logradouro}</td>
