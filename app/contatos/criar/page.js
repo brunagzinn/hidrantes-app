@@ -28,8 +28,7 @@ export default function Criar() {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    const maxSize = 200 * 1024; // Tamanho máximo em bytes (200KB)
-    console.log(file.size, maxSize)
+    const maxSize = 200 * 1024; // Tamanho máximo em bytes (200KB)    
     if (file.size > maxSize) {
       alert("A imagem excede o tamanho máximo de 200KB.");
       setImagem(null);

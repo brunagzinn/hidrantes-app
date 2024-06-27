@@ -5,8 +5,7 @@ import { useAuth } from "@/src/context/AuthContext";
 
 export function Navbar() {
   const { isAuthenticated, isAdmin, logout } = useAuth();
-  console.log("navbar", isAuthenticated, isAdmin);
-  
+    
   const handleLogout = () => {
     logout();
     window.location.href = '/login';
