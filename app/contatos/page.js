@@ -28,16 +28,13 @@ export default function Page() {
   const [tipo, setTipo] = useState(searchTipo ?? '');
 
   const detalhes = async (contato) => {
-
     // buscar imagem do hidrante na rota api/contatos/[id]/imagem
-
     const response = await fetch(`/api/contatos/${contato.id}/imagem`);
     const data = await response.json();
     setImagem(data.imagem);
     
     setContatoDetalhe(contato);
     onOpen();
-  
   }
 
   useEffect(() => {
@@ -107,9 +104,9 @@ export default function Page() {
       <p className="text-center my-4 text-lg text-gray-500">Clique no botão <strong>detalhes</strong> para obter mais opções</p>
 
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <div className="relative">
-          <input type="search" value={bairro} onChange={event => setBairro(event.target.value)} className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pesquisar por bairro..." />
-          <Link href="/contatos/criar" className="text-gray-900 absolute end-2.5 bottom-2.5 border border-gray-300 odd:bg-white hover:bg-gray-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Adicionar Hidrante</Link>
+        <div className="relative flex flex-col sm:flex-row justify-between items-center p-4">
+          <input type="search" value={bairro} onChange={event => setBairro(event.target.value)} className="block w-full sm:w-1/2 mb-4 sm:mb-0 p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pesquisar por bairro..." />
+          <Link href="/contatos/criar" className="text-gray-900 border border-gray-300 bg-white hover:bg-gray-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Adicionar Hidrante</Link>
         </div>
 
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -124,9 +121,9 @@ export default function Page() {
           <tbody>
             {contatos.map((contato) => (
               <tr key={contato.id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <td className="px-6 py-4 flex justify-center">
-                  <Button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { detalhes(contato); }}>Detalhes</Button>
-                  <Link href={`https://www.google.com/maps?q=${contato.latitude},${contato.longitude}`} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-400 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Localizar</Link>
+                <td className="px-6 py-4 flex flex-col sm:flex-row justify-center">
+                  <Button className="mb-2 sm:mb-0 sm:mr-2 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { detalhes(contato); }}>Detalhes</Button>
+                  <Link href={`https://www.google.com/maps?q=${contato.latitude},${contato.longitude}`} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-400 hover:text-white focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'> Localizar</Link>
                 </td>
                 <td className="px-6 py-4">{contato.logradouro}</td>
                 <td className="px-6 py-4">{contato.bairro}</td>
