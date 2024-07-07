@@ -47,12 +47,12 @@ export default async function handler(req, res) {
                                    AND upper(logradouro) LIKE upper(${logradouroLike})
                                    AND upper(nome) LIKE upper(${nomeLike}) 
                                    AND upper(tipo) LIKE upper(${tipoLike}) 
-                                   ORDER BY nome`;
+                                   ORDER BY "data", nome`;
         res.json(rows);
       } else {
         const { rows } = await sql`SELECT id, nome, logradouro, bairro, cidade, uf, latitude, longitude, tipo, observacao, pressao, vazao, "data"
                                    FROM contatos 
-                                   ORDER BY nome`;
+                                   ORDER BY "data", nome`;
         res.json(rows);
       }
       return;
