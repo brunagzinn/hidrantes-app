@@ -42,12 +42,12 @@ export default function Page() {
                   <p className='text-center'>Opções de Usuário:</p>
                 </div>
                 <div className='flex justify-center'>
-                  <Link href={`/usuarios/${usuarioDetalhe?.id}/editar`} className='text-white bg-red-700 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'>Editar</Link>
-                  <Link href={`/usuarios/${usuarioDetalhe?.id}/excluir`} className='text-white bg-red-700 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'>Excluir</Link>
+                  <Link href={`/usuarios/${usuarioDetalhe?.id}/editar`} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Editar</Link>
+                  <Link href={`/usuarios/${usuarioDetalhe?.id}/excluir`} className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'>Excluir</Link>
                 </div>
               </ModalBody>
               <ModalFooter>
-                <Button onClick={onClose} color="danger" variant='light'>Fechar</Button>
+                <Button onClick={onClose} variant='light'>Fechar</Button>
               </ModalFooter>
             </>
           )}
@@ -59,7 +59,7 @@ export default function Page() {
       <Link href="/usuarios/criar" className="text-white bg-red-700 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Adicionar Usuário</Link>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-xs text-white uppercase bg-[rgba(217,55,53,0.97)]">
             <tr>
               <th scope="col" className="px-6 py-3 text-center">Mais Opções</th>
               <th scope="col" className="px-6 py-3">Username</th>
@@ -71,7 +71,7 @@ export default function Page() {
               usuarios.map((usuario) =>
                 <tr key={usuario.id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                   <td className="px-6 py-4 flex flex-col sm:flex-row justify-center">
-                    <Button className="text-white bg-red-700 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" onClick={() => { setUsuarioDetalhe(usuario); onOpen(); }}>Detalhes</Button>
+                    <Button className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" onClick={() => { setUsuarioDetalhe(usuario); onOpen(); }}>Detalhes</Button>
                   </td>
                   <td className="px-6 py-4">{usuario.username}</td>
                   <td className="px-6 py-4">{usuario.perfil}</td>
